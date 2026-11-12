@@ -35,3 +35,21 @@ local full-resolution report is ignored at `results/local-validation.json`.
 
 No paper accuracy results, Raspberry Pi measurements, trained checkpoints, TVM,
 TensorRT, ONNX Runtime, quantized models, or compiled backends were evaluated.
+
+## ZipDepth and LNCA extension, 2026-11-13
+
+- Cloned official ZipDepth at `91f3fd21e131641f51e8d35736d1958350180e3a`.
+- Added base/balanced convex-unfold and NPU-friendly blending configurations,
+  both unfused and executed on CPU without loading checkpoints.
+- Added an explicitly labelled LNCA paper reconstruction; no official code was
+  found. See `LNCA_NOTES.md` for uncertainties. Four tests passed, covering exact
+  component parameter budgets, four shared updates, positive depth, independent
+  local construction, both ZipDepth upsampling paths, rectangular output shape,
+  finite CPU outputs, and unknown-model rejection.
+- All eight configurations passed a fresh sequential 192×640, FP32, batch-one,
+  one-thread run with 10 warm-ups and 30 samples. Each report source was verified
+  against its upstream lock or committed local LNCA file; the latter does not
+  establish paper equivalence. JSON/CSV report validation passed.
+- Results and provenance are committed in `benchmarks/cpu-2026-11-13.*`.
+- The upstream setup check now tolerates untracked import caches while still
+  refusing tracked edits or wrong revisions; existing checkouts are never rewritten.

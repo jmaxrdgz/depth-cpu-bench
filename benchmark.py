@@ -182,7 +182,7 @@ def main():
     fields = ['model', 'status', 'mean_ms', 'median_ms', 'p90_ms', 'p95_ms', 'min_ms', 'max_ms',
               'stdev_ms', 'fps', 'parameters']
     with args.output.with_suffix('.csv').open('w', newline='') as stream:
-        writer = csv.DictWriter(stream, fieldnames=fields, extrasaction='ignore')
+        writer = csv.DictWriter(stream, fieldnames=fields, extrasaction='ignore', lineterminator='\n')
         writer.writeheader()
         writer.writerows(report['results'])
     print(f'Wrote {args.output} and {args.output.with_suffix(".csv")}', flush=True)

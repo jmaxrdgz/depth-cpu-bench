@@ -13,7 +13,10 @@ def setup():
         target = ROOT / 'upstream' / name
         if target.exists():
             actual = subprocess.check_output(['git', '-C', str(target), 'rev-parse', 'HEAD'], text=True).strip()
-            dirty = subprocess.check_output(['git', '-C', str(target), 'status', '--porcelain'], text=True)
+            # Imports create untracked __pycache__ directories. Only tracked
+            # edits matter here: existing checkouts are never rewritten.
+            dirty = subprocess.check_output(['git', '-C', str(target), 'status', '--porcelain',
+                                             '--untracked-files=no'], text=True)
             if actual != spec['revision'] or dirty:
                 raise SystemExit(f'{target}: existing checkout differs from lock or has local changes; left untouched')
         else:

@@ -7,27 +7,39 @@ or checkpoint downloads. Measures latency, not depth accuracy.
 
 ## CPU results
 
-Local run on **Apple M3**, macOS 15.7.3 ARM64, **13 November 2026**
-(23:03 UTC on 12 November). PyTorch 2.14.1 eager, FP32, batch one, **192×640 RGB**,
-one intra-op thread and one inter-op thread, contiguous memory format.
-Each model received 10 warm-ups and 30 timed forwards using a pre-generated ring
-of 16 uniform-noise images. All upstream revisions matched `upstreams.json`.
+Local run on **Apple M3**, macOS 15.7.3 ARM64, **13 November 2026**.
+PyTorch 2.14.1 eager, FP32, batch one, **192×640 RGB**, one intra-op thread and
+one inter-op thread, contiguous memory format. Each configuration received
+10 warm-ups and 30 timed forwards using a pre-generated ring of 16 uniform-noise
+images. All official upstream revisions matched `upstreams.json`.
 
-| Model | Parameters (M) | Mean (ms) | Median (ms) | p95 (ms) | FPS |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| GuideDepth-S | 5.723 | 31.93 | 31.26 | 34.31 | 31.32 |
-| FastDepth | 3.961 | 52.67 | 52.95 | 60.07 | 18.99 |
-| RT-MonoDepth-S | 1.234 | 64.09 | 63.82 | 66.87 | 15.60 |
-| GuideDepth | 5.825 | 77.63 | 75.27 | 89.78 | 12.88 |
-| RT-MonoDepth | 2.591 | 151.59 | 149.09 | 171.97 | 6.60 |
+| Model | Implementation | Parameters (M) | Mean (ms) | Median (ms) | p95 (ms) | FPS |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| LNCA reconstruction† | Paper reconstruction† | 0.041 | 6.54 | 6.44 | 7.01 | 152.94 |
+| GuideDepth-S | Official, unfused | 5.723 | 32.36 | 31.77 | 36.13 | 30.90 |
+| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 42.42 | 40.82 | 54.09 | 23.57 |
+| ZipDepth (convex) | Official, unfused | 6.788 | 43.71 | 44.46 | 45.65 | 22.88 |
+| FastDepth | Official, unfused | 3.961 | 52.84 | 52.65 | 55.03 | 18.92 |
+| RT-MonoDepth-S | Official, unfused | 1.234 | 61.25 | 60.94 | 64.32 | 16.33 |
+| GuideDepth | Official, unfused | 5.825 | 74.09 | 73.21 | 82.49 | 13.50 |
+| RT-MonoDepth | Official, unfused | 2.591 | 148.24 | 146.72 | 166.93 | 6.75 |
 
-**GuideDepth-S was fastest in this run**, at 31.32 FPS, about 1.65× FastDepth’s
-throughput. FPS is calculated from mean latency, not median latency.
+**GuideDepth-S was fastest among the official implementations in this run**, at 30.90 FPS.
+FPS is calculated from mean latency, not median latency. All models, including
+both ZipDepth paths, run on CPU without reparameterization or Conv–BN fusion.
+
+† LNCA is a **local paper reconstruction**, not official author code or a
+validated reproduction. Its 40,832 parameters match the paper’s component
+counts; unresolved details are listed in [LNCA_NOTES.md](LNCA_NOTES.md). Treat its
+timing as the performance of this reconstruction, not verification of the paper.
 
 These are short CPU forward-pass measurements with **random weights**, not depth
 accuracy results or end-to-end camera throughput. FastDepth is unpruned;
-RT-MonoDepth variants omit auxiliary training prediction heads. The table does
-not reproduce the papers’ TVM/TensorRT benchmarks.
+RT-MonoDepth variants omit auxiliary training prediction heads. This table does
+not reproduce TVM/TensorRT or the LNCA paper’s smartphone ONNX benchmarks.
+
+Recorded data: [JSON with samples and provenance](benchmarks/cpu-2026-11-13.json)
+and [CSV summary](benchmarks/cpu-2026-11-13.csv).
 
 Reproduce the run:
 
@@ -52,7 +64,7 @@ The setup script clones four official repositories into ignored `upstream/`
 directories and checks out exact revisions from `upstreams.json`. LNCA is implemented locally
 from the paper and needs no external clone. Standard and
 small variants share their upstream project. Existing checkouts are verified;
-the script refuses to replace changed revisions or dirty files.
+the script refuses to replace changed revisions or tracked local edits.
 
 ## Run
 
