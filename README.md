@@ -4,6 +4,36 @@ Compare **FastDepth, GuideDepth, GuideDepth-S, RT-MonoDepth, RT-MonoDepth-S**
 on pre-generated RGB noise. Batch one, CPU only, FP32, random weights, no datasets
 or checkpoint downloads. Measures latency, not depth accuracy.
 
+## CPU results
+
+Local run on **Apple M3**, macOS 15.7.3 ARM64, **13 November 2026**
+(23:03 UTC on 12 November). PyTorch 2.14.1 eager, FP32, batch one, **192×640 RGB**,
+one intra-op thread and one inter-op thread, contiguous memory format.
+Each model received 10 warm-ups and 30 timed forwards using a pre-generated ring
+of 16 uniform-noise images. All upstream revisions matched `upstreams.json`.
+
+| Model | Parameters (M) | Mean (ms) | Median (ms) | p95 (ms) | FPS |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| GuideDepth-S | 5.723 | 31.93 | 31.26 | 34.31 | 31.32 |
+| FastDepth | 3.961 | 52.67 | 52.95 | 60.07 | 18.99 |
+| RT-MonoDepth-S | 1.234 | 64.09 | 63.82 | 66.87 | 15.60 |
+| GuideDepth | 5.825 | 77.63 | 75.27 | 89.78 | 12.88 |
+| RT-MonoDepth | 2.591 | 151.59 | 149.09 | 171.97 | 6.60 |
+
+**GuideDepth-S was fastest in this run**, at 31.32 FPS, about 1.65× FastDepth’s
+throughput. FPS is calculated from mean latency, not median latency.
+
+These are short CPU forward-pass measurements with **random weights**, not depth
+accuracy results or end-to-end camera throughput. FastDepth is unpruned;
+RT-MonoDepth variants omit auxiliary training prediction heads. The table does
+not reproduce the papers’ TVM/TensorRT benchmarks.
+
+Reproduce the run:
+
+```bash
+.venv/bin/python benchmark.py --threads 1 --warmup 10 --iterations 30 --output results/verified-cpu.json
+```
+
 ## Setup
 
 Use Python 3.10–3.13 and a compatible PyTorch/torchvision pair. On Linux, install
