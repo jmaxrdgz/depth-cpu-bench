@@ -1,0 +1,14 @@
+{
+  "fast-depth": {
+    "url": "https://github.com/dwofk/fast-depth.git",
+    "revision": "e68492011609c9bfb7de6d402da5d1d201d95bd9"
+  },
+  "GuidedDecoding": {
+    "url": "https://github.com/mic-rud/GuidedDecoding.git",
+    "revision": "b1db5156e2aa07544dfeef0625bf73209ee50c4c"
+  },
+  "RT-MonoDepth": {
+    "url": "https://github.com/Ecalpal/RT-MonoDepth.git",
+    "revision": "3ccc2256396b1478913864f18639ab8b377feced"
+  }
+}
