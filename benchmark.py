@@ -2,6 +2,7 @@
 """Batch-one FP32 PyTorch CPU forward latency on pre-generated uniform RGB noise."""
 import argparse
 import csv
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -62,6 +63,19 @@ def percentile(values, q):
 
 def source_info(args):
     repo_name = REPOS[args.worker]
+    if repo_name is None:
+        path = ROOT / 'lnca.py'
+        contents = path.read_bytes()
+        try:
+            committed = subprocess.check_output(['git', '-C', str(ROOT), 'show', 'HEAD:lnca.py'],
+                                                stderr=subprocess.DEVNULL)
+            revision = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip()
+        except (OSError, subprocess.CalledProcessError):
+            committed, revision = None, None
+        return dict(kind='paper-reimplementation', revision=revision,
+                    file='lnca.py', file_sha256=hashlib.sha256(contents).hexdigest(),
+                    verified=committed == contents, paper_equivalence_verified=False,
+                    paper='https://link.springer.com/article/10.1007/s42979-026-05327-4')
     path = args.upstream_root / repo_name
     expected = json.loads((ROOT / 'upstreams.json').read_text())[repo_name]['revision']
     def git(*options):
@@ -72,7 +86,7 @@ def source_info(args):
         if not (path / '.git').exists():
             raise ValueError('source snapshot, not a clone')
         actual, dirty = git('rev-parse', 'HEAD'), bool(git('status', '--porcelain', '--untracked-files=no'))
-        return dict(revision=actual, expected_revision=expected, dirty=dirty,
+        return dict(kind='official-upstream', revision=actual, expected_revision=expected, dirty=dirty,
                     verified=actual == expected and not dirty)
     except (OSError, ValueError, subprocess.CalledProcessError):
         return dict(revision=None, expected_revision=expected, dirty=None, verified=False)
@@ -126,7 +140,8 @@ def main():
         worker(args)
         return
     args.upstream_root = args.upstream_root.resolve()
-    missing = [name for name in set(REPOS[m] for m in args.models) if not (args.upstream_root / name).is_dir()]
+    missing = [name for name in set(REPOS[m] for m in args.models)
+               if name is not None and not (args.upstream_root / name).is_dir()]
     if missing:
         raise SystemExit(f'Missing upstream clones: {", ".join(sorted(missing))}. Run python setup_upstreams.py first.')
     report = dict(schema_version=1, timestamp_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),

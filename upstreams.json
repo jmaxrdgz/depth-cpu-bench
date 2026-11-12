@@ -10,5 +10,9 @@
   "RT-MonoDepth": {
     "url": "https://github.com/Ecalpal/RT-MonoDepth.git",
     "revision": "3ccc2256396b1478913864f18639ab8b377feced"
+  },
+  "ZipDepth": {
+    "url": "https://github.com/fabiotosi92/ZipDepth.git",
+    "revision": "91f3fd21e131641f51e8d35736d1958350180e3a"
   }
 }

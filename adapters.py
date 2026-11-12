@@ -1,10 +1,12 @@
-"""Use upstream layers unchanged; disable pretrained loading and auxiliary outputs."""
+"""Official upstream adapters plus an explicitly labelled LNCA reconstruction."""
 import importlib.util
 from pathlib import Path
 import sys
 
-MODELS = ('fastdepth', 'guidedepth', 'guidedepth-s', 'rt-monodepth', 'rt-monodepth-s')
-REPOS = dict(zip(MODELS, ('fast-depth', 'GuidedDecoding', 'GuidedDecoding', 'RT-MonoDepth', 'RT-MonoDepth')))
+MODELS = ('fastdepth', 'guidedepth', 'guidedepth-s', 'rt-monodepth', 'rt-monodepth-s',
+          'zipdepth', 'zipdepth-npu', 'lnca-reimplementation')
+REPOS = dict(zip(MODELS, ('fast-depth', 'GuidedDecoding', 'GuidedDecoding', 'RT-MonoDepth',
+                         'RT-MonoDepth', 'ZipDepth', 'ZipDepth', None)))
 
 
 def load_file(name, path):
@@ -17,10 +19,19 @@ def load_file(name, path):
 
 def build_model(name, upstream_root, output_size=(192, 640)):
     import torch.nn as nn
+    if name == 'lnca-reimplementation':
+        from lnca import LNCADepth
+        return LNCADepth()
+    if name not in MODELS:
+        raise ValueError(f'Unknown model: {name}')
     repo = Path(upstream_root) / REPOS[name]
     # Each benchmark variant runs in its own process, avoiding generic upstream
     # package-name collisions (model, models, imagenet, networks).
     sys.path.insert(0, str(repo))
+    if name.startswith('zipdepth'):
+        from zipdepth.model.architecture import create_model
+        return create_model(variant='base', global_mode='balanced', pretrained=False,
+                            upsample_unfold=name == 'zipdepth')
     if name == 'fastdepth':
         module = load_file('fastdepth_upstream', repo / 'models.py')
         return module.MobileNetSkipAdd(output_size=output_size, pretrained=False)

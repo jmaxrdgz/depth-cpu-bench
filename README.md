@@ -1,6 +1,7 @@
 # Depth CPU benchmarks
 
-Compare **FastDepth, GuideDepth, GuideDepth-S, RT-MonoDepth, RT-MonoDepth-S**
+Compare **FastDepth, GuideDepth, GuideDepth-S, RT-MonoDepth, RT-MonoDepth-S,
+ZipDepth, ZipDepth-NPU, and an explicitly labelled LNCA reconstruction**
 on pre-generated RGB noise. Batch one, CPU only, FP32, random weights, no datasets
 or checkpoint downloads. Measures latency, not depth accuracy.
 
@@ -47,8 +48,9 @@ python -m pip install -r requirements.txt
 python setup_upstreams.py
 ```
 
-The setup script clones three official repositories into ignored `upstream/`
-directories and checks out exact revisions from `upstreams.json`. Standard and
+The setup script clones four official repositories into ignored `upstream/`
+directories and checks out exact revisions from `upstreams.json`. LNCA is implemented locally
+from the paper and needs no external clone. Standard and
 small variants share their upstream project. Existing checkouts are verified;
 the script refuses to replace changed revisions or dirty files.
 
@@ -103,17 +105,32 @@ trained-weight numerical behavior, or end-to-end camera throughput.
 | `guidedepth-s` | Official small configuration: both feature lists `[32,8,4]` |
 | `rt-monodepth` | Official full encoder + decoder, `scales=[0]`, default skips |
 | `rt-monodepth-s` | Official small encoder + decoder, `scales=[0]`, default no skips |
+| `zipdepth` | Official base model, balanced global context, convex/unfold upsampling, unfused |
+| `zipdepth-npu` | Official base model with learned nearest/bilinear blend, unfused; executed on CPU |
+| `lnca-reimplementation` | Local paper reconstruction, 32 channels, four shared NCA updates, 40,832 parameters; see [assumptions](LNCA_NOTES.md) |
 
 The RT-MonoDepth wrapper hardcodes CUDA. We instantiate its encoder and decoder
 directly, retaining their upstream operations. `scales=[0]` omits auxiliary
 training prediction heads while retaining the final prediction head. We do not
 modify upstream source files. Checkpoints are intentionally not loaded.
 
+ZipDepth uses the same unfused PyTorch eager policy as the existing models;
+reparameterization and Conv–BN fusion are not applied. Both upsampling paths run
+on CPU: the `-npu` suffix identifies the architecture path, not the execution
+device. No additional training/export dependencies are required.
+
+LNCA is **not official author code**. Its parameter total and component counts
+match the paper, but unresolved implementation details are documented in
+[LNCA_NOTES.md](LNCA_NOTES.md). JSON records its implementation SHA-256, local
+Git revision, and `paper_equivalence_verified=false`; `source.verified` for this
+model means only that its source file matches the local committed file.
+Its timings cannot validate the paper’s reported accuracy or deployment speed.
+
 ## Private GitHub repository
 
 Private repository: https://github.com/jmaxrdgz/depth-cpu-bench
 
-The three upstream repositories are cloned locally at their pinned revisions.
+The four upstream repositories are cloned locally at their pinned revisions.
 For another machine:
 
 ```bash
@@ -135,10 +152,19 @@ including RT-MonoDepth's non-commercial restrictions.
 - https://github.com/dwofk/fast-depth
 - https://github.com/mic-rud/GuidedDecoding
 - https://github.com/Ecalpal/RT-MonoDepth
+- https://github.com/fabiotosi92/ZipDepth
+- https://arxiv.org/html/2607.08771v1
+- https://link.springer.com/article/10.1007/s42979-026-05327-4
 
 ## Validation
 
-All five variants passed CPU output shape/finite checks and JSON/CSV export.
+The original five variants and three newly added configurations passed CPU
+output shape/finite checks and JSON/CSV export. Architecture contract tests:
+
+```bash
+.venv/bin/python -m unittest discover -s tests -v
+```
+
 See `VALIDATION.md` for the environment and run conditions. The local `.venv`
 uses Python 3.13 and cached PyTorch packages; the previous incomplete environment
 is preserved at `.venv.previous/`. Neither environment is committed.
