@@ -7,6 +7,8 @@ or checkpoint downloads. Measures latency, not depth accuracy.
 
 ## CPU results
 
+### MacBook (Apple M3, one CPU thread)
+
 Local run on **Apple M3**, macOS 15.7.3 ARM64, **15 November 2026**.
 PyTorch 2.14.1 eager, FP32, batch one, **192×640 RGB**, one intra-op thread and
 one inter-op thread, contiguous memory format. Each configuration received
@@ -50,6 +52,56 @@ Reproduce the run:
 
 ```bash
 .venv/bin/python benchmark.py --threads 1 --warmup 10 --iterations 30 --output results/verified-cpu.json
+```
+
+### Raspberry Pi 5 (two CPU cores)
+
+Run on **Raspberry Pi 5 Model B Rev 1.1, 8 GB RAM**, four Cortex-A76 cores
+(stock maximum **2.4 GHz**), **15 November 2026**. Debian 13.7 (64-bit ARM),
+Linux 6.18.50+rpt-rpi-2712, Python 3.13.5, PyTorch **2.14.1+cpu**,
+torchvision 0.29.1+cpu and NumPy 2.5.4.
+
+All nine models passed a full-resolution two-thread preflight, so every model
+used **two intra-op threads and one inter-op thread**, with Linux CPU affinity
+restricted to **cores 2–3** (`taskset -c 2,3`). This is a two-core run; the
+MacBook table above uses one thread. FP32 eager, batch one, **192×640 RGB**,
+contiguous memory format, random weights, seed 0, 16 pre-generated uniform-noise
+images, **10 warm-ups and 30 timed forwards** per model. Models ran sequentially
+in fresh processes with the same verified upstream revisions and adapters as
+the MacBook run, including YOLO's timed full-resolution resize.
+
+| Model | Implementation | Parameters (M) | Mean (ms) | Median (ms) | p95 (ms) | FPS |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| LNCA reconstruction† | Paper reconstruction† | 0.041 | 25.08 | 24.93 | 25.82 | 39.87 |
+| GuideDepth-S | Official, unfused | 5.723 | 190.57 | 190.17 | 192.23 | 5.25 |
+| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 196.41 | 196.36 | 197.78 | 5.09 |
+| RT-MonoDepth-S | Official, unfused | 1.234 | 203.54 | 203.45 | 204.40 | 4.91 |
+| ZipDepth (convex) | Official, unfused | 6.788 | 210.85 | 210.84 | 212.47 | 4.74 |
+| YOLO26n-depth | Official, unfused | 5.175 | 273.81 | 273.61 | 275.05 | 3.65 |
+| FastDepth | Official, unfused | 3.961 | 277.73 | 277.72 | 279.41 | 3.60 |
+| GuideDepth | Official, unfused | 5.825 | 385.69 | 381.20 | 410.78 | 2.59 |
+| RT-MonoDepth | Official, unfused | 2.591 | 502.28 | 502.84 | 505.38 | 1.99 |
+
+**GuideDepth-S was fastest among the official implementations at 5.25 FPS.**
+The LNCA row retains the reconstruction caveat above; these measurements do not
+establish depth accuracy. FPS is `1000 / mean_ms`.
+
+The CPU governor remained `ondemand`. One-second telemetry samples reported
+2.4 GHz on CPU 0 throughout, temperatures **40.8–53.5°C**, and
+`vcgencmd get_throttled` was **0x0** at every sample (no current or historical
+undervoltage, frequency capping, throttling or soft temperature limit flags).
+A separate monitoring process sampled telemetry during the run; its overhead
+remains part of the machine's background load.
+
+Recorded data: [JSON with samples and provenance](benchmarks/rpi5-2026-11-15.json),
+[CSV summary](benchmarks/rpi5-2026-11-15.csv), and
+[hardware, package versions, command and telemetry](benchmarks/rpi5-2026-11-15-conditions.json).
+
+Reproduce on the Pi after setup (CPU-only wheels were installed from the
+PyTorch CPU index, with torch 2.14.1, torchvision 0.29.1 and NumPy 2.5.4):
+
+```bash
+taskset -c 2,3 .venv/bin/python benchmark.py --threads 2 --warmup 10 --iterations 30 --output results/rpi5.json
 ```
 
 ## Setup

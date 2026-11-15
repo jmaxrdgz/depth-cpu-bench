@@ -1,0 +1,1329 @@
+{
+  "hostname": "jmaxrdgz-rpi",
+  "model": "Raspberry Pi 5 Model B Rev 1.1",
+  "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.7\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"",
+  "uname": "Linux jmaxrdgz-rpi 6.18.50+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.18.50-1+rpt1 (2026-09-11) aarch64 GNU/Linux",
+  "cpu_info": "Architecture:                            aarch64\nCPU op-mode(s):                          32-bit, 64-bit\nByte Order:                              Little Endian\nCPU(s):                                  4\nOn-line CPU(s) list:                     0-3\nVendor ID:                               ARM\nModel name:                              Cortex-A76\nModel:                                   1\nThread(s) per core:                      1\nCore(s) per cluster:                     4\nSocket(s):                               -\nCluster(s):                              1\nStepping:                                r4p1\nFrequency boost:                         disabled\nCPU(s) scaling MHz:                      62%\nCPU max MHz:                             2400.0000\nCPU min MHz:                             1500.0000\nBogoMIPS:                                108.00\nFlags:                                   fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop asimddp\nL1d cache:                               256 KiB (4 instances)\nL1i cache:                               256 KiB (4 instances)\nL2 cache:                                2 MiB (4 instances)\nL3 cache:                                2 MiB (1 instance)\nNUMA node(s):                            8\nNUMA node0 CPU(s):                       0-3\nNUMA node1 CPU(s):                       0-3\nNUMA node2 CPU(s):                       0-3\nNUMA node3 CPU(s):                       0-3\nNUMA node4 CPU(s):                       0-3\nNUMA node5 CPU(s):                       0-3\nNUMA node6 CPU(s):                       0-3\nNUMA node7 CPU(s):                       0-3\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; CSV2, BHB\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected",
+  "memory": "MemTotal:        8255824 kB\nMemFree:         4204832 kB\nMemAvailable:    7778832 kB\nBuffers:           74432 kB\nCached:          3443344 kB\nSwapCached:            0 kB\nActive:           229328 kB\nInactive:        3351856 kB\nActive(anon):      76208 kB\nInactive(anon):        0 kB\nActive(file):     153120 kB\nInactive(file):  3351856 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       2097136 kB\nSwapFree:        2097136 kB\nZswap:                 0 kB\nZswapped:              0 kB\nDirty:              2192 kB\nWriteback:             0 kB\nAnonPages:         64128 kB\nMapped:            71056 kB\nShmem:             13024 kB\nKReclaimable:     158960 kB\nSlab:             208592 kB\nSReclaimable:     158960 kB\nSUnreclaim:        49632 kB\nKernelStack:        2800 kB\nPageTables:         3168 kB\nSecPageTables:       112 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     6225040 kB\nCommitted_AS:     207264 kB\nVmallocTotal:   68447887360 kB\nVmallocUsed:       52128 kB\nVmallocChunk:          0 kB\nPercpu:              960 kB\nCmaTotal:          65536 kB\nCmaFree:           56320 kB\nBalloon:               0 kB",
+  "governor": "ondemand",
+  "min_frequency_khz": 1500000,
+  "max_frequency_khz": 2400000,
+  "cpu_affinity": [
+    2,
+    3
+  ],
+  "command": [
+    "taskset",
+    "-c",
+    "2,3",
+    ".venv/bin/python",
+    "benchmark.py",
+    "--threads",
+    "2",
+    "--warmup",
+    "10",
+    "--iterations",
+    "30",
+    "--output",
+    "benchmarks/rpi5-2026-11-15.json"
+  ],
+  "revision": "2c6994f251cdcac10028799c7c4cbcb8b52ee4d5",
+  "packages": [
+    "certifi==2026.10.23",
+    "charset-normalizer==3.5.2",
+    "contourpy==1.4.0",
+    "cycler==0.12.1",
+    "filelock==4.2.10",
+    "fonttools==4.68.0",
+    "fsspec==2026.9.0",
+    "idna==3.20",
+    "Jinja2==3.1.6",
+    "kiwisolver==1.5.1",
+    "MarkupSafe==3.0.3",
+    "matplotlib==3.11.2",
+    "mpmath==1.3.0",
+    "networkx==3.7",
+    "numpy==2.5.4",
+    "opencv-python==5.0.0.93",
+    "packaging==26.3",
+    "pillow==13.0.0",
+    "polars==2.1.0",
+    "polars-runtime-32==2.1.0",
+    "psutil==7.2.2",
+    "pyparsing==3.3.3",
+    "python-dateutil==4.0.0",
+    "PyYAML==6.0.3",
+    "requests==2.34.2",
+    "scipy==1.18.1",
+    "setuptools==84.2.1",
+    "sympy==1.14.0",
+    "torch==2.14.1+cpu",
+    "torchvision==0.29.1+cpu",
+    "typing_extensions==4.16.0",
+    "tzdata==2026.6",
+    "ultralytics-thop==2.2.5",
+    "urllib3==2.8.0"
+  ],
+  "sampling_interval_seconds": 1,
+  "samples": [
+    {
+      "timestamp_utc": "2026-11-15T13:50:19Z",
+      "temperature_c": 40.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.41943359375,
+        0.796875,
+        0.3330078125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:20Z",
+      "temperature_c": 41.35,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.41943359375,
+        0.796875,
+        0.3330078125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:21Z",
+      "temperature_c": 43.55,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.41943359375,
+        0.796875,
+        0.3330078125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:22Z",
+      "temperature_c": 43.55,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.41943359375,
+        0.796875,
+        0.3330078125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:23Z",
+      "temperature_c": 44.1,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.46630859375,
+        0.81689453125,
+        0.34228515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:24Z",
+      "temperature_c": 46.3,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.46630859375,
+        0.81689453125,
+        0.34228515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:25Z",
+      "temperature_c": 45.75,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.46630859375,
+        0.81689453125,
+        0.34228515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:26Z",
+      "temperature_c": 45.75,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.46630859375,
+        0.81689453125,
+        0.34228515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:27Z",
+      "temperature_c": 45.2,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.46630859375,
+        0.81689453125,
+        0.34228515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:28Z",
+      "temperature_c": 46.85,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.50927734375,
+        0.8369140625,
+        0.3515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:29Z",
+      "temperature_c": 46.85,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.50927734375,
+        0.8369140625,
+        0.3515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:30Z",
+      "temperature_c": 47.4,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.50927734375,
+        0.8369140625,
+        0.3515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:31Z",
+      "temperature_c": 46.85,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.50927734375,
+        0.8369140625,
+        0.3515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:32Z",
+      "temperature_c": 46.3,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.50927734375,
+        0.8369140625,
+        0.3515625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:33Z",
+      "temperature_c": 46.85,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.548828125,
+        0.8564453125,
+        0.36083984375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:34Z",
+      "temperature_c": 45.75,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.548828125,
+        0.8564453125,
+        0.36083984375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:35Z",
+      "temperature_c": 45.75,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.548828125,
+        0.8564453125,
+        0.36083984375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:36Z",
+      "temperature_c": 45.2,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.548828125,
+        0.8564453125,
+        0.36083984375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:37Z",
+      "temperature_c": 46.85,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.548828125,
+        0.8564453125,
+        0.36083984375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:38Z",
+      "temperature_c": 47.4,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.5849609375,
+        0.87548828125,
+        0.3701171875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:39Z",
+      "temperature_c": 46.85,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.5849609375,
+        0.87548828125,
+        0.3701171875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:40Z",
+      "temperature_c": 47.95,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.5849609375,
+        0.87548828125,
+        0.3701171875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:41Z",
+      "temperature_c": 47.4,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.5849609375,
+        0.87548828125,
+        0.3701171875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:42Z",
+      "temperature_c": 47.95,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.5849609375,
+        0.87548828125,
+        0.3701171875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:43Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.61865234375,
+        0.89453125,
+        0.37890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:44Z",
+      "temperature_c": 47.95,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.61865234375,
+        0.89453125,
+        0.37890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:46Z",
+      "temperature_c": 47.4,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.61865234375,
+        0.89453125,
+        0.37890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:47Z",
+      "temperature_c": 47.95,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.61865234375,
+        0.89453125,
+        0.37890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:48Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.61865234375,
+        0.89453125,
+        0.37890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:49Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6494140625,
+        0.9130859375,
+        0.3876953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:50Z",
+      "temperature_c": 47.95,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6494140625,
+        0.9130859375,
+        0.3876953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:51Z",
+      "temperature_c": 47.95,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6494140625,
+        0.9130859375,
+        0.3876953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:52Z",
+      "temperature_c": 48.5,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6494140625,
+        0.9130859375,
+        0.3876953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:53Z",
+      "temperature_c": 47.4,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6494140625,
+        0.9130859375,
+        0.3876953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:54Z",
+      "temperature_c": 47.4,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.59716796875,
+        0.91455078125,
+        0.39111328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:55Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.59716796875,
+        0.91455078125,
+        0.39111328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:56Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.59716796875,
+        0.91455078125,
+        0.39111328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:57Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.59716796875,
+        0.91455078125,
+        0.39111328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:58Z",
+      "temperature_c": 49.6,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.59716796875,
+        0.91455078125,
+        0.39111328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:50:59Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6298828125,
+        0.9326171875,
+        0.39990234375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:00Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6298828125,
+        0.9326171875,
+        0.39990234375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:01Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6298828125,
+        0.9326171875,
+        0.39990234375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:02Z",
+      "temperature_c": 48.5,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6298828125,
+        0.9326171875,
+        0.39990234375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:03Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.6298828125,
+        0.9326171875,
+        0.39990234375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:04Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.65966796875,
+        0.95068359375,
+        0.40869140625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:05Z",
+      "temperature_c": 49.6,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.65966796875,
+        0.95068359375,
+        0.40869140625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:06Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.65966796875,
+        0.95068359375,
+        0.40869140625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:07Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.65966796875,
+        0.95068359375,
+        0.40869140625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:08Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.65966796875,
+        0.95068359375,
+        0.40869140625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:09Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.68701171875,
+        0.96826171875,
+        0.41748046875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:10Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.68701171875,
+        0.96826171875,
+        0.41748046875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:11Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.68701171875,
+        0.96826171875,
+        0.41748046875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:12Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.68701171875,
+        0.96826171875,
+        0.41748046875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:13Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.68701171875,
+        0.96826171875,
+        0.41748046875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:14Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.71240234375,
+        0.98583984375,
+        0.42626953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:15Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.71240234375,
+        0.98583984375,
+        0.42626953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:16Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.71240234375,
+        0.98583984375,
+        0.42626953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:17Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.71240234375,
+        0.98583984375,
+        0.42626953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:18Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.71240234375,
+        0.98583984375,
+        0.42626953125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:19Z",
+      "temperature_c": 51.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.73583984375,
+        1.0029296875,
+        0.43505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:20Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.73583984375,
+        1.0029296875,
+        0.43505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:21Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.73583984375,
+        1.0029296875,
+        0.43505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:22Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.73583984375,
+        1.0029296875,
+        0.43505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:23Z",
+      "temperature_c": 49.6,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.73583984375,
+        1.0029296875,
+        0.43505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:24Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.75732421875,
+        1.01953125,
+        0.44384765625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:25Z",
+      "temperature_c": 49.6,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.75732421875,
+        1.01953125,
+        0.44384765625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:26Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.75732421875,
+        1.01953125,
+        0.44384765625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:27Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.75732421875,
+        1.01953125,
+        0.44384765625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:28Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.75732421875,
+        1.01953125,
+        0.44384765625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:29Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.77685546875,
+        1.0361328125,
+        0.45263671875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:30Z",
+      "temperature_c": 51.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.77685546875,
+        1.0361328125,
+        0.45263671875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:31Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.77685546875,
+        1.0361328125,
+        0.45263671875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:32Z",
+      "temperature_c": 51.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.77685546875,
+        1.0361328125,
+        0.45263671875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:33Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.77685546875,
+        1.0361328125,
+        0.45263671875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:34Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.794921875,
+        1.05224609375,
+        0.46142578125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:35Z",
+      "temperature_c": 49.6,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.794921875,
+        1.05224609375,
+        0.46142578125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:36Z",
+      "temperature_c": 48.5,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.794921875,
+        1.05224609375,
+        0.46142578125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:37Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.794921875,
+        1.05224609375,
+        0.46142578125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:38Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.794921875,
+        1.05224609375,
+        0.46142578125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:39Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8115234375,
+        1.068359375,
+        0.4697265625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:40Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8115234375,
+        1.068359375,
+        0.4697265625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:41Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8115234375,
+        1.068359375,
+        0.4697265625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:42Z",
+      "temperature_c": 51.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8115234375,
+        1.068359375,
+        0.4697265625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:43Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8115234375,
+        1.068359375,
+        0.4697265625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:44Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.82666015625,
+        1.083984375,
+        0.47802734375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:45Z",
+      "temperature_c": 49.6,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.82666015625,
+        1.083984375,
+        0.47802734375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:46Z",
+      "temperature_c": 48.5,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.82666015625,
+        1.083984375,
+        0.47802734375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:47Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.82666015625,
+        1.083984375,
+        0.47802734375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:48Z",
+      "temperature_c": 49.6,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.82666015625,
+        1.083984375,
+        0.47802734375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:49Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8408203125,
+        1.099609375,
+        0.486328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:50Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8408203125,
+        1.099609375,
+        0.486328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:51Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8408203125,
+        1.099609375,
+        0.486328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:52Z",
+      "temperature_c": 51.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8408203125,
+        1.099609375,
+        0.486328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:53Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.8408203125,
+        1.099609375,
+        0.486328125
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:54Z",
+      "temperature_c": 51.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.85400390625,
+        1.11474609375,
+        0.49462890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:55Z",
+      "temperature_c": 49.6,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.85400390625,
+        1.11474609375,
+        0.49462890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:56Z",
+      "temperature_c": 48.5,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.85400390625,
+        1.11474609375,
+        0.49462890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:57Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.85400390625,
+        1.11474609375,
+        0.49462890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:58Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.85400390625,
+        1.11474609375,
+        0.49462890625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:51:59Z",
+      "temperature_c": 48.5,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.86572265625,
+        1.1298828125,
+        0.5029296875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:00Z",
+      "temperature_c": 51.25,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.86572265625,
+        1.1298828125,
+        0.5029296875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:01Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.86572265625,
+        1.1298828125,
+        0.5029296875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:02Z",
+      "temperature_c": 51.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.86572265625,
+        1.1298828125,
+        0.5029296875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:03Z",
+      "temperature_c": 50.7,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.86572265625,
+        1.1298828125,
+        0.5029296875
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:04Z",
+      "temperature_c": 52.35,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.79638671875,
+        1.12744140625,
+        0.505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:05Z",
+      "temperature_c": 51.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.79638671875,
+        1.12744140625,
+        0.505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:06Z",
+      "temperature_c": 51.8,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.79638671875,
+        1.12744140625,
+        0.505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:07Z",
+      "temperature_c": 52.35,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.79638671875,
+        1.12744140625,
+        0.505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:08Z",
+      "temperature_c": 52.35,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.79638671875,
+        1.12744140625,
+        0.505859375
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:09Z",
+      "temperature_c": 53.45,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.81298828125,
+        1.14208984375,
+        0.51416015625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:10Z",
+      "temperature_c": 52.35,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.81298828125,
+        1.14208984375,
+        0.51416015625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:11Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.81298828125,
+        1.14208984375,
+        0.51416015625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:12Z",
+      "temperature_c": 49.05,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.81298828125,
+        1.14208984375,
+        0.51416015625
+      ]
+    },
+    {
+      "timestamp_utc": "2026-11-15T13:52:12Z",
+      "temperature_c": 50.15,
+      "frequency_khz": 2400000,
+      "throttled": "throttled=0x0",
+      "load_average": [
+        1.81298828125,
+        1.14208984375,
+        0.51416015625
+      ]
+    }
+  ],
+  "observed_process_affinity": [
+    2,
+    3
+  ],
+  "returncode": 0
+}

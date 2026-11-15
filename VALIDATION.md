@@ -73,3 +73,24 @@ TensorRT, ONNX Runtime, quantized models, or compiled backends were evaluated.
 - New results: `benchmarks/cpu-2026-11-15.json` and `.csv`. The earlier run is
   retained. Model predictions still use random weights, so no accuracy comparison
   or metric-scale validation is implied.
+
+## Raspberry Pi 5 two-core comparison, 2026-11-15
+
+- Connected to `jmaxrdgz-rpi` through Tailscale; cloned this private repository
+  into `/home/jmaxrdgz/depth-cpu-bench` and all five pinned upstream repositories.
+- Used an isolated Python 3.13.5 environment on Debian 13.7 ARM64 with CPU-only
+  PyTorch 2.14.1+cpu, torchvision 0.29.1+cpu and NumPy 2.5.4.
+- All nine models passed a full-resolution, two-thread preflight. The recorded
+  comparison then used two intra-op threads, one inter-op thread, CPU affinity
+  2–3, 192×640, FP32, batch one, contiguous memory, seed 0, 16 noise images,
+  ten warm-ups and thirty timed forwards per model, sequential fresh processes.
+- All nine output checks and source verifications passed. Report checks confirmed
+  sample counts, thread settings, shapes, finite timings, FPS calculations,
+  CSV/JSON agreement and identical parameter counts/upstream commits to the Mac run.
+- One-second telemetry recorded 40.8–53.5°C, CPU 0 at 2.4 GHz, and throttling
+  flags 0x0 throughout; governor `ondemand`. Full conditions and installed package
+  versions are archived in `benchmarks/rpi5-2026-11-15-conditions.json`.
+- Results are in `benchmarks/rpi5-2026-11-15.json` and `.csv`; README contains
+  a separate table below the MacBook comparison, with the differing core count explicit.
+- After timing completed, all five architecture tests passed on the Pi and
+  `pip check` reported no broken requirements.
