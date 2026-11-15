@@ -53,3 +53,23 @@ TensorRT, ONNX Runtime, quantized models, or compiled backends were evaluated.
 - Results and provenance are committed in `benchmarks/cpu-2026-11-13.*`.
 - The upstream setup check now tolerates untracked import caches while still
   refusing tracked edits or wrong revisions; existing checkouts are never rewritten.
+
+## YOLO26n-depth extension, 2026-11-15
+
+- Cloned Ultralytics at `f6296469e088e228eb6776a28f1060fbc993ef62` (8.4.213).
+- Constructed official `DepthModel` from the depth YAML with explicit nano scale;
+  no checkpoint loading, automatic package installation, predictor or fusion.
+- Included bilinear 4× upsampling with `align_corners=True` inside the timed
+  forward to match the official export resize and produce full-resolution depth.
+- Installed model-import dependencies from PyPI into the existing `.venv`;
+  PyTorch 2.14.1, torchvision 0.29.1 and NumPy 2.5.4 remained unchanged.
+- Five architecture tests passed. The new test checks nano scale, depth task,
+  unfused CPU construction, native quarter-resolution output, exact resize
+  equivalence, final rectangular shape, finite values and positive depth.
+- All five upstream locks passed setup verification. All nine configurations
+  passed a sequential CPU run at 192×640, FP32, batch one, one intra-op and one
+  inter-op thread, 10 warm-ups and 30 timed forwards. Source verification,
+  shape, sample-count, thread-count, FPS and CSV/JSON checks passed.
+- New results: `benchmarks/cpu-2026-11-15.json` and `.csv`. The earlier run is
+  retained. Model predictions still use random weights, so no accuracy comparison
+  or metric-scale validation is implied.

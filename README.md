@@ -7,7 +7,7 @@ or checkpoint downloads. Measures latency, not depth accuracy.
 
 ## CPU results
 
-Local run on **Apple M3**, macOS 15.7.3 ARM64, **13 November 2026**.
+Local run on **Apple M3**, macOS 15.7.3 ARM64, **15 November 2026**.
 PyTorch 2.14.1 eager, FP32, batch one, **192×640 RGB**, one intra-op thread and
 one inter-op thread, contiguous memory format. Each configuration received
 10 warm-ups and 30 timed forwards using a pre-generated ring of 16 uniform-noise
@@ -15,18 +15,20 @@ images. All official upstream revisions matched `upstreams.json`.
 
 | Model | Implementation | Parameters (M) | Mean (ms) | Median (ms) | p95 (ms) | FPS |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| LNCA reconstruction† | Paper reconstruction† | 0.041 | 6.54 | 6.44 | 7.01 | 152.94 |
-| GuideDepth-S | Official, unfused | 5.723 | 32.36 | 31.77 | 36.13 | 30.90 |
-| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 42.42 | 40.82 | 54.09 | 23.57 |
-| ZipDepth (convex) | Official, unfused | 6.788 | 43.71 | 44.46 | 45.65 | 22.88 |
-| FastDepth | Official, unfused | 3.961 | 52.84 | 52.65 | 55.03 | 18.92 |
-| RT-MonoDepth-S | Official, unfused | 1.234 | 61.25 | 60.94 | 64.32 | 16.33 |
-| GuideDepth | Official, unfused | 5.825 | 74.09 | 73.21 | 82.49 | 13.50 |
-| RT-MonoDepth | Official, unfused | 2.591 | 148.24 | 146.72 | 166.93 | 6.75 |
+| LNCA reconstruction† | Paper reconstruction† | 0.041 | 7.01 | 7.05 | 7.53 | 142.59 |
+| GuideDepth-S | Official, unfused | 5.723 | 30.23 | 30.16 | 31.97 | 33.08 |
+| YOLO26n-depth | Official, unfused | 5.175 | 34.69 | 34.97 | 36.29 | 28.83 |
+| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 37.98 | 37.75 | 39.06 | 26.33 |
+| ZipDepth (convex) | Official, unfused | 6.788 | 44.48 | 42.61 | 52.03 | 22.48 |
+| FastDepth | Official, unfused | 3.961 | 48.84 | 48.47 | 54.28 | 20.48 |
+| RT-MonoDepth-S | Official, unfused | 1.234 | 59.45 | 59.30 | 62.09 | 16.82 |
+| GuideDepth | Official, unfused | 5.825 | 74.75 | 72.02 | 86.68 | 13.38 |
+| RT-MonoDepth | Official, unfused | 2.591 | 140.81 | 139.60 | 147.23 | 7.10 |
 
-**GuideDepth-S was fastest among the official implementations in this run**, at 30.90 FPS.
-FPS is calculated from mean latency, not median latency. All models, including
-both ZipDepth paths, run on CPU without reparameterization or Conv–BN fusion.
+**GuideDepth-S was fastest among the official implementations in this run**, at 33.08 FPS.
+**YOLO26n-depth reached 28.83 FPS**, including full-resolution bilinear upsampling.
+FPS is calculated from mean latency, not median latency. All models run on CPU
+without reparameterization or Conv–BN fusion.
 
 † LNCA is a **local paper reconstruction**, not official author code or a
 validated reproduction. Its 40,832 parameters match the paper’s component
@@ -35,11 +37,14 @@ timing as the performance of this reconstruction, not verification of the paper.
 
 These are short CPU forward-pass measurements with **random weights**, not depth
 accuracy results or end-to-end camera throughput. FastDepth is unpruned;
-RT-MonoDepth variants omit auxiliary training prediction heads. This table does
-not reproduce TVM/TensorRT or the LNCA paper’s smartphone ONNX benchmarks.
+RT-MonoDepth variants omit auxiliary training prediction heads. YOLO26n-depth
+uses its official nano architecture with identity calibration, without TTA or
+letterboxing. This table does not reproduce published ONNX/TensorRT, smartphone
+or trained-checkpoint accuracy benchmarks.
 
-Recorded data: [JSON with samples and provenance](benchmarks/cpu-2026-11-13.json)
-and [CSV summary](benchmarks/cpu-2026-11-13.csv).
+Recorded data: [JSON with samples and provenance](benchmarks/cpu-2026-11-15.json)
+and [CSV summary](benchmarks/cpu-2026-11-15.csv). The previous eight-model run is
+preserved in [the 13 November archive](benchmarks/cpu-2026-11-13.json).
 
 Reproduce the run:
 
@@ -185,8 +190,7 @@ including RT-MonoDepth's non-commercial restrictions and Ultralytics' AGPL-3.0 l
 
 ## Validation
 
-All nine configurations passed CPU
-output shape/finite checks and JSON/CSV export. Architecture contract tests:
+All nine configurations passed CPU output shape/finite checks and JSON/CSV export. Architecture contract tests:
 
 ```bash
 .venv/bin/python -m unittest discover -s tests -v
