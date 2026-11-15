@@ -1,3 +1,12 @@
 torch>=2.2,<3
 torchvision>=0.17,<1
 numpy>=1.26,<3
+# Imports needed by the pinned Ultralytics source adapter (no pip ultralytics).
+opencv-python>=4.7,!=4.13.0.90
+matplotlib>=3.3
+PyYAML>=6
+requests>=2.23
+psutil>=5.8
+scipy>=1.10
+polars>=0.20
+ultralytics-thop>=2.2.4

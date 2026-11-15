@@ -14,5 +14,9 @@
   "ZipDepth": {
     "url": "https://github.com/fabiotosi92/ZipDepth.git",
     "revision": "91f3fd21e131641f51e8d35736d1958350180e3a"
+  },
+  "ultralytics": {
+    "url": "https://github.com/ultralytics/ultralytics.git",
+    "revision": "f6296469e088e228eb6776a28f1060fbc993ef62"
   }
 }

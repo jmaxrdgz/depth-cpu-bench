@@ -52,6 +52,25 @@ class NewModelContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Unknown model'):
             build_model('unknown', ROOT / 'upstream')
 
+    def test_yolo_nano_scale_and_full_resolution_resize(self):
+        if not (ROOT / 'upstream/ultralytics/ultralytics').is_dir():
+            self.skipTest('Run setup_upstreams.py to test YOLO26n-depth integration')
+        model = build_model('yolo26n-depth', ROOT / 'upstream').eval()
+        self.assertEqual(model[0].yaml['scale'], 'n')
+        self.assertEqual(type(model[0].model[-1]).__name__, 'Depth')
+        self.assertTrue(any(isinstance(layer, torch.nn.BatchNorm2d) for layer in model.modules()))
+        self.assertTrue(all(p.device.type == 'cpu' for p in model.parameters()))
+        with torch.inference_mode():
+            image = torch.rand(1, 3, 64, 96)
+            coarse = model[0](image)
+            output = model(image)
+            expected = torch.nn.functional.interpolate(coarse, scale_factor=4, mode='bilinear', align_corners=True)
+        self.assertEqual(tuple(coarse.shape), (1, 1, 16, 24))
+        self.assertEqual(tuple(output.shape), (1, 1, 64, 96))
+        torch.testing.assert_close(output, expected)
+        self.assertTrue(torch.isfinite(output).all().item())
+        self.assertTrue((output > 0).all().item())
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,7 +1,7 @@
 # Depth CPU benchmarks
 
 Compare **FastDepth, GuideDepth, GuideDepth-S, RT-MonoDepth, RT-MonoDepth-S,
-ZipDepth, ZipDepth-NPU, and an explicitly labelled LNCA reconstruction**
+ZipDepth, ZipDepth-NPU, YOLO26n-depth, and an explicitly labelled LNCA reconstruction**
 on pre-generated RGB noise. Batch one, CPU only, FP32, random weights, no datasets
 or checkpoint downloads. Measures latency, not depth accuracy.
 
@@ -60,7 +60,7 @@ python -m pip install -r requirements.txt
 python setup_upstreams.py
 ```
 
-The setup script clones four official repositories into ignored `upstream/`
+The setup script clones five official repositories into ignored `upstream/`
 directories and checks out exact revisions from `upstreams.json`. LNCA is implemented locally
 from the paper and needs no external clone. Standard and
 small variants share their upstream project. Existing checkouts are verified;
@@ -119,6 +119,7 @@ trained-weight numerical behavior, or end-to-end camera throughput.
 | `rt-monodepth-s` | Official small encoder + decoder, `scales=[0]`, default no skips |
 | `zipdepth` | Official base model, balanced global context, convex/unfold upsampling, unfused |
 | `zipdepth-npu` | Official base model with learned nearest/bilinear blend, unfused; executed on CPU |
+| `yolo26n-depth` | Official Ultralytics depth YAML with explicit nano scale; unfused `DepthModel` plus timed full-resolution bilinear resize |
 | `lnca-reimplementation` | Local paper reconstruction, 32 channels, four shared NCA updates, 40,832 parameters; see [assumptions](LNCA_NOTES.md) |
 
 The RT-MonoDepth wrapper hardcodes CUDA. We instantiate its encoder and decoder
@@ -131,6 +132,18 @@ reparameterization and Conv–BN fusion are not applied. Both upsampling paths r
 on CPU: the `-npu` suffix identifies the architecture path, not the execution
 device. No additional training/export dependencies are required.
 
+YOLO26n-depth is instantiated from the pinned Ultralytics source YAML with
+`scale='n'`, random weights and identity calibration. We call `DepthModel`
+directly, without the high-level predictor, fusion, TTA, letterboxing or checkpoint
+loading. Its eval head emits H/4×W/4; a bilinear 4× upsample with
+`align_corners=True` (matching the official export path) is included in the timed
+forward so every model produces H×W. Values already include the upstream head's
+clamping, exponentiation and calibration buffers. Inputs remain RGB noise in
+`[0,1)`. The pinned clone supplies Ultralytics itself; `requirements.txt` supplies
+its model-import dependencies. Automatic package installation and online checks
+are disabled for this adapter; settings use the ignored `results/ultralytics/`
+directory by default.
+
 LNCA is **not official author code**. Its parameter total and component counts
 match the paper, but unresolved implementation details are documented in
 [LNCA_NOTES.md](LNCA_NOTES.md). JSON records its implementation SHA-256, local
@@ -142,7 +155,7 @@ Its timings cannot validate the paper’s reported accuracy or deployment speed.
 
 Private repository: https://github.com/jmaxrdgz/depth-cpu-bench
 
-The four upstream repositories are cloned locally at their pinned revisions.
+The five upstream repositories are cloned locally at their pinned revisions.
 For another machine:
 
 ```bash
@@ -157,7 +170,7 @@ python benchmark.py --threads 1
 
 Upstream dependencies are locked external clones rather than vendored source;
 the parent repository records their URLs and commits. Respect upstream licenses,
-including RT-MonoDepth's non-commercial restrictions.
+including RT-MonoDepth's non-commercial restrictions and Ultralytics' AGPL-3.0 license.
 
 ## Sources
 
@@ -165,12 +178,14 @@ including RT-MonoDepth's non-commercial restrictions.
 - https://github.com/mic-rud/GuidedDecoding
 - https://github.com/Ecalpal/RT-MonoDepth
 - https://github.com/fabiotosi92/ZipDepth
+- https://github.com/ultralytics/ultralytics
+- https://docs.ultralytics.com/tasks/depth
 - https://arxiv.org/html/2607.08771v1
 - https://link.springer.com/article/10.1007/s42979-026-05327-4
 
 ## Validation
 
-The original five variants and three newly added configurations passed CPU
+All nine configurations passed CPU
 output shape/finite checks and JSON/CSV export. Architecture contract tests:
 
 ```bash
