@@ -16,17 +16,17 @@ one inter-op thread, contiguous memory format. Each configuration received
 pre-generated uniform-noise images**, each used once during timing.
 All official upstream revisions matched `upstreams.json`.
 
-| Model | Implementation | Parameters (M) | Mean (ms) | Median (ms) | p95 (ms) | FPS |
-| --- | --- | ---: | ---: | ---: | ---: | ---: |
-| LNCA reconstruction† | Paper reconstruction† | 0.041 | 6.93 | 6.81 | 7.66 | 144.36 |
-| GuideDepth-S | Official, unfused | 5.723 | 29.63 | 29.86 | 33.63 | 33.75 |
-| YOLO26n-depth | Official, unfused | 5.175 | 33.40 | 32.86 | 36.47 | 29.94 |
-| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 34.16 | 31.91 | 41.87 | 29.27 |
-| ZipDepth (convex) | Official, unfused | 6.788 | 39.03 | 37.39 | 43.12 | 25.62 |
-| FastDepth | Official, unfused | 3.961 | 43.69 | 44.04 | 45.73 | 22.89 |
-| RT-MonoDepth-S | Official, unfused | 1.234 | 61.99 | 61.28 | 68.81 | 16.13 |
-| GuideDepth | Official, unfused | 5.825 | 76.04 | 76.80 | 83.62 | 13.15 |
-| RT-MonoDepth | Official, unfused | 2.591 | 143.58 | 141.76 | 159.41 | 6.96 |
+| Model | Parameters (M) | Mean (ms) | FPS |
+| --- | ---: | ---: | ---: |
+| LNCA reconstruction† | 0.041 | 6.93 | 144.36 |
+| GuideDepth-S | 5.723 | 29.63 | 33.75 |
+| YOLO26n-depth | 5.175 | 33.40 | 29.94 |
+| ZipDepth (NPU-friendly path) | 6.787 | 34.16 | 29.27 |
+| ZipDepth (convex) | 6.788 | 39.03 | 25.62 |
+| FastDepth | 3.961 | 43.69 | 22.89 |
+| RT-MonoDepth-S | 1.234 | 61.99 | 16.13 |
+| GuideDepth | 5.825 | 76.04 | 13.15 |
+| RT-MonoDepth | 2.591 | 143.58 | 6.96 |
 
 **GuideDepth-S was fastest among the official implementations in this run**, at 33.75 FPS.
 **YOLO26n-depth reached 29.94 FPS**, including full-resolution bilinear upsampling.
@@ -73,17 +73,17 @@ timed forwards per model**. Models ran sequentially
 in fresh processes with the same verified upstream revisions and adapters as
 the MacBook run, including YOLO's timed full-resolution resize.
 
-| Model | Implementation | Parameters (M) | Mean (ms) | Median (ms) | p95 (ms) | FPS |
-| --- | --- | ---: | ---: | ---: | ---: | ---: |
-| LNCA reconstruction† | Paper reconstruction† | 0.041 | 25.05 | 24.98 | 25.64 | 39.92 |
-| GuideDepth-S | Official, unfused | 5.723 | 188.84 | 188.76 | 189.74 | 5.30 |
-| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 195.83 | 195.72 | 196.67 | 5.11 |
-| RT-MonoDepth-S | Official, unfused | 1.234 | 205.42 | 205.40 | 206.34 | 4.87 |
-| ZipDepth (convex) | Official, unfused | 6.788 | 209.94 | 209.79 | 211.31 | 4.76 |
-| YOLO26n-depth | Official, unfused | 5.175 | 273.80 | 273.69 | 274.85 | 3.65 |
-| FastDepth | Official, unfused | 3.961 | 281.49 | 281.42 | 282.95 | 3.55 |
-| GuideDepth | Official, unfused | 5.825 | 388.94 | 388.87 | 391.34 | 2.57 |
-| RT-MonoDepth | Official, unfused | 2.591 | 499.86 | 499.62 | 501.06 | 2.00 |
+| Model | Parameters (M) | Mean (ms) | FPS |
+| --- | ---: | ---: | ---: |
+| LNCA reconstruction† | 0.041 | 25.05 | 39.92 |
+| GuideDepth-S | 5.723 | 188.84 | 5.30 |
+| ZipDepth (NPU-friendly path) | 6.787 | 195.83 | 5.11 |
+| RT-MonoDepth-S | 1.234 | 205.42 | 4.87 |
+| ZipDepth (convex) | 6.788 | 209.94 | 4.76 |
+| YOLO26n-depth | 5.175 | 273.80 | 3.65 |
+| FastDepth | 3.961 | 281.49 | 3.55 |
+| GuideDepth | 5.825 | 388.94 | 2.57 |
+| RT-MonoDepth | 2.591 | 499.86 | 2.00 |
 
 **GuideDepth-S was fastest among the official implementations at 5.30 FPS.**
 The LNCA row retains the reconstruction caveat above; these measurements do not
