@@ -12,23 +12,24 @@ or checkpoint downloads. Measures latency, not depth accuracy.
 Local run on **Apple M3**, macOS 15.7.3 ARM64, **15 November 2026**.
 PyTorch 2.14.1 eager, FP32, batch one, **192×640 RGB**, one intra-op thread and
 one inter-op thread, contiguous memory format. Each configuration received
-10 warm-ups and 30 timed forwards using a pre-generated ring of 16 uniform-noise
-images. All official upstream revisions matched `upstreams.json`.
+**10 warm-ups and 1,000 timed forwards per model**, using **1,000 distinct
+pre-generated uniform-noise images**, each used once during timing.
+All official upstream revisions matched `upstreams.json`.
 
 | Model | Implementation | Parameters (M) | Mean (ms) | Median (ms) | p95 (ms) | FPS |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| LNCA reconstruction† | Paper reconstruction† | 0.041 | 7.01 | 7.05 | 7.53 | 142.59 |
-| GuideDepth-S | Official, unfused | 5.723 | 30.23 | 30.16 | 31.97 | 33.08 |
-| YOLO26n-depth | Official, unfused | 5.175 | 34.69 | 34.97 | 36.29 | 28.83 |
-| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 37.98 | 37.75 | 39.06 | 26.33 |
-| ZipDepth (convex) | Official, unfused | 6.788 | 44.48 | 42.61 | 52.03 | 22.48 |
-| FastDepth | Official, unfused | 3.961 | 48.84 | 48.47 | 54.28 | 20.48 |
-| RT-MonoDepth-S | Official, unfused | 1.234 | 59.45 | 59.30 | 62.09 | 16.82 |
-| GuideDepth | Official, unfused | 5.825 | 74.75 | 72.02 | 86.68 | 13.38 |
-| RT-MonoDepth | Official, unfused | 2.591 | 140.81 | 139.60 | 147.23 | 7.10 |
+| LNCA reconstruction† | Paper reconstruction† | 0.041 | 6.93 | 6.81 | 7.66 | 144.36 |
+| GuideDepth-S | Official, unfused | 5.723 | 29.63 | 29.86 | 33.63 | 33.75 |
+| YOLO26n-depth | Official, unfused | 5.175 | 33.40 | 32.86 | 36.47 | 29.94 |
+| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 34.16 | 31.91 | 41.87 | 29.27 |
+| ZipDepth (convex) | Official, unfused | 6.788 | 39.03 | 37.39 | 43.12 | 25.62 |
+| FastDepth | Official, unfused | 3.961 | 43.69 | 44.04 | 45.73 | 22.89 |
+| RT-MonoDepth-S | Official, unfused | 1.234 | 61.99 | 61.28 | 68.81 | 16.13 |
+| GuideDepth | Official, unfused | 5.825 | 76.04 | 76.80 | 83.62 | 13.15 |
+| RT-MonoDepth | Official, unfused | 2.591 | 143.58 | 141.76 | 159.41 | 6.96 |
 
-**GuideDepth-S was fastest among the official implementations in this run**, at 33.08 FPS.
-**YOLO26n-depth reached 28.83 FPS**, including full-resolution bilinear upsampling.
+**GuideDepth-S was fastest among the official implementations in this run**, at 33.75 FPS.
+**YOLO26n-depth reached 29.94 FPS**, including full-resolution bilinear upsampling.
 FPS is calculated from mean latency, not median latency. All models run on CPU
 without reparameterization or Conv–BN fusion.
 
@@ -37,21 +38,22 @@ validated reproduction. Its 40,832 parameters match the paper’s component
 counts; unresolved details are listed in [LNCA_NOTES.md](LNCA_NOTES.md). Treat its
 timing as the performance of this reconstruction, not verification of the paper.
 
-These are short CPU forward-pass measurements with **random weights**, not depth
+These are CPU forward-pass measurements with **random weights**, not depth
 accuracy results or end-to-end camera throughput. FastDepth is unpruned;
 RT-MonoDepth variants omit auxiliary training prediction heads. YOLO26n-depth
 uses its official nano architecture with identity calibration, without TTA or
 letterboxing. This table does not reproduce published ONNX/TensorRT, smartphone
 or trained-checkpoint accuracy benchmarks.
 
-Recorded data: [JSON with samples and provenance](benchmarks/cpu-2026-11-15.json)
-and [CSV summary](benchmarks/cpu-2026-11-15.csv). The previous eight-model run is
-preserved in [the 13 November archive](benchmarks/cpu-2026-11-13.json).
+Recorded data: [JSON with samples and provenance](benchmarks/cpu-2026-11-15-1000.json)
+and [CSV summary](benchmarks/cpu-2026-11-15-1000.csv). Earlier short runs remain
+archived: [nine models, 30 forwards](benchmarks/cpu-2026-11-15.json)
+and [eight models, 30 forwards](benchmarks/cpu-2026-11-13.json).
 
 Reproduce the run:
 
 ```bash
-.venv/bin/python benchmark.py --threads 1 --warmup 10 --iterations 30 --output results/verified-cpu.json
+.venv/bin/python benchmark.py --threads 1 --warmup 10 --iterations 1000 --noise-images 1000 --output results/verified-cpu.json
 ```
 
 ### Raspberry Pi 5 (two CPU cores)
@@ -65,43 +67,57 @@ All nine models passed a full-resolution two-thread preflight, so every model
 used **two intra-op threads and one inter-op thread**, with Linux CPU affinity
 restricted to **cores 2–3** (`taskset -c 2,3`). This is a two-core run; the
 MacBook table above uses one thread. FP32 eager, batch one, **192×640 RGB**,
-contiguous memory format, random weights, seed 0, 16 pre-generated uniform-noise
-images, **10 warm-ups and 30 timed forwards** per model. Models ran sequentially
+contiguous memory format, random weights, seed 0, **1,000 distinct pre-generated
+uniform-noise images**, each used once during timing, **10 warm-ups and 1,000
+timed forwards per model**. Models ran sequentially
 in fresh processes with the same verified upstream revisions and adapters as
 the MacBook run, including YOLO's timed full-resolution resize.
 
 | Model | Implementation | Parameters (M) | Mean (ms) | Median (ms) | p95 (ms) | FPS |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| LNCA reconstruction† | Paper reconstruction† | 0.041 | 25.08 | 24.93 | 25.82 | 39.87 |
-| GuideDepth-S | Official, unfused | 5.723 | 190.57 | 190.17 | 192.23 | 5.25 |
-| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 196.41 | 196.36 | 197.78 | 5.09 |
-| RT-MonoDepth-S | Official, unfused | 1.234 | 203.54 | 203.45 | 204.40 | 4.91 |
-| ZipDepth (convex) | Official, unfused | 6.788 | 210.85 | 210.84 | 212.47 | 4.74 |
-| YOLO26n-depth | Official, unfused | 5.175 | 273.81 | 273.61 | 275.05 | 3.65 |
-| FastDepth | Official, unfused | 3.961 | 277.73 | 277.72 | 279.41 | 3.60 |
-| GuideDepth | Official, unfused | 5.825 | 385.69 | 381.20 | 410.78 | 2.59 |
-| RT-MonoDepth | Official, unfused | 2.591 | 502.28 | 502.84 | 505.38 | 1.99 |
+| LNCA reconstruction† | Paper reconstruction† | 0.041 | 25.05 | 24.98 | 25.64 | 39.92 |
+| GuideDepth-S | Official, unfused | 5.723 | 188.84 | 188.76 | 189.74 | 5.30 |
+| ZipDepth (NPU-friendly path) | Official, unfused | 6.787 | 195.83 | 195.72 | 196.67 | 5.11 |
+| RT-MonoDepth-S | Official, unfused | 1.234 | 205.42 | 205.40 | 206.34 | 4.87 |
+| ZipDepth (convex) | Official, unfused | 6.788 | 209.94 | 209.79 | 211.31 | 4.76 |
+| YOLO26n-depth | Official, unfused | 5.175 | 273.80 | 273.69 | 274.85 | 3.65 |
+| FastDepth | Official, unfused | 3.961 | 281.49 | 281.42 | 282.95 | 3.55 |
+| GuideDepth | Official, unfused | 5.825 | 388.94 | 388.87 | 391.34 | 2.57 |
+| RT-MonoDepth | Official, unfused | 2.591 | 499.86 | 499.62 | 501.06 | 2.00 |
 
-**GuideDepth-S was fastest among the official implementations at 5.25 FPS.**
+**GuideDepth-S was fastest among the official implementations at 5.30 FPS.**
 The LNCA row retains the reconstruction caveat above; these measurements do not
 establish depth accuracy. FPS is `1000 / mean_ms`.
 
-The CPU governor remained `ondemand`. One-second telemetry samples reported
-2.4 GHz on CPU 0 throughout, temperatures **40.8–53.5°C**, and
-`vcgencmd get_throttled` was **0x0** at every sample (no current or historical
-undervoltage, frequency capping, throttling or soft temperature limit flags).
+**Power instability was detected during this Pi run.** The 10-second telemetry
+samples of `vcgencmd get_throttled` changed from `0x0` to `0x50000` at
+14:20:42 UTC, recording
+undervoltage and throttling events. Additional live spot checks observed
+`0x50005` (active undervoltage and throttling) during RT-MonoDepth and YOLO26n-depth;
+see [validation notes](VALIDATION.md). These flags follow the
+[official Raspberry Pi definitions](https://www.raspberrypi.com/documentation/computers/os.html#get_throttled).
+The table includes all 1,000 samples per model, including any effects of these
+events; their impact was not isolated. Treat it as the observed performance of
+this Pi under these power conditions.
+
+The governor remained `ondemand`. Ten-second telemetry samples recorded
+**41.35–60.05°C** and CPU 0's `scaling_cur_freq` reported 2.4 GHz at every sample;
+that sampled value does not establish uninterrupted effective clock speed.
 A separate monitoring process sampled telemetry during the run; its overhead
 remains part of the machine's background load.
 
-Recorded data: [JSON with samples and provenance](benchmarks/rpi5-2026-11-15.json),
-[CSV summary](benchmarks/rpi5-2026-11-15.csv), and
-[hardware, package versions, command and telemetry](benchmarks/rpi5-2026-11-15-conditions.json).
+Recorded data: [JSON with samples and provenance](benchmarks/rpi5-2026-11-15-1000.json),
+[CSV summary](benchmarks/rpi5-2026-11-15-1000.csv), and
+[hardware, package versions, command and telemetry](benchmarks/rpi5-2026-11-15-1000-conditions.json).
+
+The previous [30-forward Pi run](benchmarks/rpi5-2026-11-15.json) and its
+[conditions](benchmarks/rpi5-2026-11-15-conditions.json) remain archived.
 
 Reproduce on the Pi after setup (CPU-only wheels were installed from the
 PyTorch CPU index, with torch 2.14.1, torchvision 0.29.1 and NumPy 2.5.4):
 
 ```bash
-taskset -c 2,3 .venv/bin/python benchmark.py --threads 2 --warmup 10 --iterations 30 --output results/rpi5.json
+taskset -c 2,3 .venv/bin/python benchmark.py --threads 2 --warmup 10 --iterations 1000 --noise-images 1000 --output results/rpi5.json
 ```
 
 ## Setup
