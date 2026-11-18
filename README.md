@@ -5,6 +5,11 @@ ZipDepth, ZipDepth-NPU, YOLO26n-depth, and an explicitly labelled LNCA reconstru
 on pre-generated RGB noise. Batch one, CPU only, FP32, random weights, no datasets
 or checkpoint downloads. Measures latency, not depth accuracy.
 
+Pretrained relative-depth accuracy for **GuideDepth-S, ZipDepth and RT-MonoDepth-S**
+is a separate [benchmark](accuracy/README.md) with a [results table](accuracy/RESULTS.md).
+It uses CPU inference (optional MPS) on DA-2K, DIODE and ETH3D, with sequential
+dataset downloads and cleanup; it does not modify these CPU timing results.
+
 ## CPU results
 
 ### MacBook (Apple M3, one CPU thread)
