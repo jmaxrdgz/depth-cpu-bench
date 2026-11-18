@@ -1,0 +1,12 @@
+{
+  "delivery_area_dslr_undistorted.7z": {
+    "sha256": "9acf5efec4b99a69b89ebb87b403259730756c1a510307c92e5f2ce2d22658f3",
+    "bytes": 478076254,
+    "source": "https://www.eth3d.net/data/delivery_area_dslr_undistorted.7z"
+  },
+  "delivery_area_dslr_depth.7z": {
+    "sha256": "e6edc65b5b6de343876382040c839405eef79abed33319aa377883f4ddc5775a",
+    "bytes": 388144128,
+    "source": "https://www.eth3d.net/data/delivery_area_dslr_depth.7z"
+  }
+}

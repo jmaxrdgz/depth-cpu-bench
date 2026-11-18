@@ -1,0 +1,382 @@
+[
+  {
+    "name": "facade/DSC_0324",
+    "image_sha256": "2286fd29fa966359de55e13bc7a64de43e508466fa5799f153ce2752a97d0202",
+    "depth_sha256": "2749f8a4c8e3c679fc5990a6cd032aa89d5c8cb59918ffab77c26ce852de74ac"
+  },
+  {
+    "name": "facade/DSC_0325",
+    "image_sha256": "3e06486d7af40ad3d47ce68000f908044bdf639f553356cbb142421d1abee19f",
+    "depth_sha256": "8593fc6704c68266562c0fc92d3148be3e43e6983315db58f879a285ef86d0d6"
+  },
+  {
+    "name": "facade/DSC_0326",
+    "image_sha256": "4356b846ae3be9532cd8ea49c51cb74033da17dbcbdf360d1639b7f5988df60b",
+    "depth_sha256": "7d5e80fd51ab3af1cf41f7f0ec0e04140bc9b7161b47e8634ce755e71754cd4a"
+  },
+  {
+    "name": "facade/DSC_0327",
+    "image_sha256": "141394797146b88d660cbac058d31807f2b80ac883fa32845aa62e8e0e428671",
+    "depth_sha256": "919f038d03da5912b08a70000b9d0888c861b6f3e1808f3e85c088bab61293e3"
+  },
+  {
+    "name": "facade/DSC_0328",
+    "image_sha256": "ba6230b1c2a2980cac18c0493e9007525ffae5771949de95aabc6a7760be03e7",
+    "depth_sha256": "54ab30d62b88a8f8f511cf11bfdcf24a455f3a31341fada070622683634306b8"
+  },
+  {
+    "name": "facade/DSC_0329",
+    "image_sha256": "002cbc12f169abe3f6c61d51b51070ae20480efe95a81a11cf20a6bee99222d0",
+    "depth_sha256": "ce97c0cc6a28ed345db43ab4f7f02da5b687d0ffe1681a5fa3efd6f58f04d4a5"
+  },
+  {
+    "name": "facade/DSC_0330",
+    "image_sha256": "198a7e5236910818a3dfe35949beabf19318d581812a28d6ba583ab96d270dd9",
+    "depth_sha256": "6977ef6ab978c760fdad0d78d04a1cb51bbfad3d9ba9eee07e7241eb9aad2299"
+  },
+  {
+    "name": "facade/DSC_0331",
+    "image_sha256": "5febf726b9126d28df2ecbc96a3de9a42cba2f2d67ca620b4de34583673cb286",
+    "depth_sha256": "407151461912e2857464d0b8feeceb02ad29387bf25237f8eed0a3b302de7531"
+  },
+  {
+    "name": "facade/DSC_0332",
+    "image_sha256": "a479b22d52842c6e731b18e479de2ac959dafb2a026d3c96ac4895988276bd87",
+    "depth_sha256": "5d7e2cc006e0e199adf336cd3986b59c314224c7a5ecc025d07553978b5530db"
+  },
+  {
+    "name": "facade/DSC_0333",
+    "image_sha256": "7afdfd1771d5c99970e68d9c21e51e71f6a123ef5fc068bdc256f95c60855432",
+    "depth_sha256": "aeaf6bf25c2182a8c2984f9f3df62149b51bb1c9c225246e6486274f06a8fa24"
+  },
+  {
+    "name": "facade/DSC_0334",
+    "image_sha256": "2c41dc43569d353c823b1e9783069903d5cb4833bc964d816d4b936e8537806b",
+    "depth_sha256": "44ed24aa9a01320465f594cc9cd436d1482c6e96a2f1efe33cbe0b692ee520a6"
+  },
+  {
+    "name": "facade/DSC_0335",
+    "image_sha256": "43a7f3c7267c9267af23ce7fa360a53426d8a17c48f4752a0cf047399077b0c4",
+    "depth_sha256": "7b6ef5ab979cb703a474e7ea5667c2a61655b7f103a09a2d2d4c87d07ff217a9"
+  },
+  {
+    "name": "facade/DSC_0336",
+    "image_sha256": "7f01a07f0996f916cd50e73bf7062fec9d9c126009de87854c26bf409b0a380e",
+    "depth_sha256": "d6b7e1fc08c401ca82677cf4a13a919436762d66665462bcdc0847096f0de53b"
+  },
+  {
+    "name": "facade/DSC_0337",
+    "image_sha256": "d9440ac912718a7519fccca17a64b61b399d818fe874e68c196fb99c9e4caf6d",
+    "depth_sha256": "9b04d906c3fdd12d0151af9e9bab02c5b55cded4e11f22504239732b0657c50f"
+  },
+  {
+    "name": "facade/DSC_0338",
+    "image_sha256": "535b512ea3b93b74590b4f5b7ec8369bc02a62c355413f0704b48dc5a3b1ea83",
+    "depth_sha256": "7fb6f600ed143decaa80b71be60778bb2b675bbc20ca5fddac09128a8ea28735"
+  },
+  {
+    "name": "facade/DSC_0339",
+    "image_sha256": "18f3d2a2326024d2914ed0bdd9e6fe4003f5f758daa3d75e175634519d8f5a5a",
+    "depth_sha256": "88be68db0def82effd4da5c7740066968368ec2e1c1520f13d9fc13fc97d6a85"
+  },
+  {
+    "name": "facade/DSC_0340",
+    "image_sha256": "a2018ba94829a1ab156c06efdf6ca0840d0864fc5a9a5a1307e94bbc5b681ffe",
+    "depth_sha256": "871f88cc0d3f070051099a7845c28d77a1e3ae26dcfeff0f96261a9de64d24d3"
+  },
+  {
+    "name": "facade/DSC_0341",
+    "image_sha256": "a8df023a00ada5968ddeda2e4ab0a9a285215735c8e8a2a754ecb42e17e971d9",
+    "depth_sha256": "b01b5e0d3040dae119275afa0ab013bd8318293bcacead12c389e31294af5f40"
+  },
+  {
+    "name": "facade/DSC_0342",
+    "image_sha256": "546339923ee5d30894d49b16600372287cfab2ebb9b5de1d23762451732c12b6",
+    "depth_sha256": "2efd7aa84d48d3472a98eeb12c8ff94f51a34390ff290546150bea8939422d30"
+  },
+  {
+    "name": "facade/DSC_0343",
+    "image_sha256": "fbf20704726ebe7d09a7148cfd05dbee1145cb91f4e4a76f920ea27ca973e8c4",
+    "depth_sha256": "06c5ad01edb3d9fe61fd0c7e41f1cb722568b5f284f3f9c09e1677177a1b9b2d"
+  },
+  {
+    "name": "facade/DSC_0344",
+    "image_sha256": "f58ec73876bf3b021886f4c1f4591c62b5dc0c91c900d04f406b1112f0871670",
+    "depth_sha256": "7ce5cef2a9c11fa012da9f7e3ddf821ff9fb4bbad0419dfd63daaa03a6d52223"
+  },
+  {
+    "name": "facade/DSC_0345",
+    "image_sha256": "afcd694a69a35623ad0ba6c65b64b6642cd964060e0b0a04021e8aa600e6649c",
+    "depth_sha256": "18325c3b6dc65a23bb2d664b9cec15c478b81781f15704e8e6d5e6bc832fa07a"
+  },
+  {
+    "name": "facade/DSC_0346",
+    "image_sha256": "59dfa761396eeecdd7f86d435aefdfb009b39b214045a6c43f67d1c946b80b5b",
+    "depth_sha256": "8430ee84449aac5a3bf73cfb52a12e32ceb50f65b62b02489fc4ed81c6d94b55"
+  },
+  {
+    "name": "facade/DSC_0347",
+    "image_sha256": "dad5d4c1f8a5aa4f87b4e1cedbd4c3cd9e582383e04e7f98e6bea9eae8f8027a",
+    "depth_sha256": "0b61e3b06b5bf896ba7701c1c273513219a7e8b8c24766a681c7386c6d4b6b24"
+  },
+  {
+    "name": "facade/DSC_0348",
+    "image_sha256": "9e8f9154eb645a73e1263c5b73a8369fd8fa165ed441959b4cf1f9397fb8fe43",
+    "depth_sha256": "af15d30e806ad27bcce7ba3a40e14aa93336fffd172a13dcb550c47c96dd4ec9"
+  },
+  {
+    "name": "facade/DSC_0349",
+    "image_sha256": "fe05a9559735fae09b29ad648ee0a97339a029292b8fdf16dc4d7ba7b22e4729",
+    "depth_sha256": "ebadde15228141fe17fbe65c028ba7bc20356b5c85f08b6443ec4500c132665f"
+  },
+  {
+    "name": "facade/DSC_0350",
+    "image_sha256": "c35dfc94a4c9e8142516d8f415d8cc1c2ed6e815582a1c1e5457bad820ab7b0d",
+    "depth_sha256": "9320fa9a1247ff07335fdbce7222971991369965655b53b5064c9c8c4adb13ac"
+  },
+  {
+    "name": "facade/DSC_0351",
+    "image_sha256": "869aaebe69db52ff8303f049ae0b68e93232918241fb255b0e9e018ef36a6b82",
+    "depth_sha256": "b208e0aa0d70b7ca63707dde7dcc1208c41ab5095a22b59b35211d5e9f46b16a"
+  },
+  {
+    "name": "facade/DSC_0352",
+    "image_sha256": "2d62959460b39672e5a1a693133b6fa34106779724ecfa2e28662aeb483c74ff",
+    "depth_sha256": "1a7b2f3d9ff6ef9474375c2dfeb0d0ff4d11286bd089d06e17fae863f3e89054"
+  },
+  {
+    "name": "facade/DSC_0353",
+    "image_sha256": "4c61f0c4dadd4db449a19ea35c6a888578aa1b15de3c6668a6862c658b73464f",
+    "depth_sha256": "cc200a621533ebba65b79737b068aa751cc73219852308c6e1b55403456e2ba7"
+  },
+  {
+    "name": "facade/DSC_0354",
+    "image_sha256": "24cf09ef0d2cb1e7e5e6475338965e82c664165f4fb8f7d49a4193be2725483b",
+    "depth_sha256": "428e35914b267226eff69f5087bb2257ac41b6faaa356b4dbc96df271e261ad6"
+  },
+  {
+    "name": "facade/DSC_0355",
+    "image_sha256": "0dd74a1e82444e920c99cedfa73a59af05ff6099e2170bf1106e01024fd6471c",
+    "depth_sha256": "0378727905fd281b10e16b738cd76fe155032329cc501e75043d534740bdae4a"
+  },
+  {
+    "name": "facade/DSC_0356",
+    "image_sha256": "d9bdba2b9b92da1d33618f1bcb40d574d132f5b1eaf0bc5ed52f4690ec5654f3",
+    "depth_sha256": "28ea974de2ce927588d9bed3f512168e15070d708a95ea760a0f9e0f71705386"
+  },
+  {
+    "name": "facade/DSC_0357",
+    "image_sha256": "3c8cbd877992f3fc7d1c33520fb9829bfb5e9d33fc1faddcecade4629ca32793",
+    "depth_sha256": "b25f3fb4cef1ddccdf329dc8bc7d49786dad80e56a007ae6c05958729672f824"
+  },
+  {
+    "name": "facade/DSC_0358",
+    "image_sha256": "d9437bb9468dd32bfc1415a6fa60a7e77292d0499cfca105da71617794390a40",
+    "depth_sha256": "aff3b83cf62922880a25e4e7a092b9b38d2aff2584ee531cea7e92ef23a53e64"
+  },
+  {
+    "name": "facade/DSC_0359",
+    "image_sha256": "1d5b44044b57af1c7cae1b97903d3fdbd506fc8c17409c2417ecf7d96c4915c1",
+    "depth_sha256": "6abe2b775d460828bcc68e5f80fea444bcdbe9187f531f44276352560cbb76d0"
+  },
+  {
+    "name": "facade/DSC_0360",
+    "image_sha256": "9466c5a76c0139617050138577d95ff893b639e9fd22bec434ecfdf3aa49f3d7",
+    "depth_sha256": "f1e41f15ef4621d12910d90a888844479f57743c8f8ba90c41946dea6249530d"
+  },
+  {
+    "name": "facade/DSC_0361",
+    "image_sha256": "8195a123723bebc8e170546953097df207bb5e91219c8011f5cd61e185425bf4",
+    "depth_sha256": "f29697e3e332cd5197118eb0a568335cfc0f6f4ed59ee237bbda40b1f3ba1cbd"
+  },
+  {
+    "name": "facade/DSC_0362",
+    "image_sha256": "1160e9ba7bc4ebe6e8c993af81cbabc8e6a3ff1f0f14f968c8b07628f1ae24b6",
+    "depth_sha256": "7e9621858576b94470ba2aa52b3dd76bbcf0028c73be660c551e295f801ded81"
+  },
+  {
+    "name": "facade/DSC_0363",
+    "image_sha256": "fe0a57aec39be126369edaa1eec6eaf981e3f1681df34a7fa8fd572b6a6ca042",
+    "depth_sha256": "5fd572b5a9beb663d2de234f621dc8fbe373a7dc96761fdb1bacb444b6670c19"
+  },
+  {
+    "name": "facade/DSC_0364",
+    "image_sha256": "1b8b914068336558d24c354eaf365e807afea3925af29e8df80ca26ea7b38ac6",
+    "depth_sha256": "713b107515869a09b27f26ce94042e577a16bcc80100e40920846a94ef4a446b"
+  },
+  {
+    "name": "facade/DSC_0365",
+    "image_sha256": "5e956b0a11ff084b49881410b308d42ab387d4f52b97d35ead937fdea08b8c85",
+    "depth_sha256": "498d50c7393bf5f754fa64f4a13720dae97f5da5def776dfd4a8edeeb16a3cc2"
+  },
+  {
+    "name": "facade/DSC_0366",
+    "image_sha256": "2c5e509e6a5729208e96bc6d9350125007f4c5fe87e54985bb342b9aeccec57d",
+    "depth_sha256": "a951fb0c5a9626a6f311986c980374e3f26338c2ab769fba58b45756c374546e"
+  },
+  {
+    "name": "facade/DSC_0386",
+    "image_sha256": "8aeb43aaf9dd54e9bf499f1e460d97ca18e706e4631c41d1992e0ee21ce1f8af",
+    "depth_sha256": "b71f77c43ecbc1f2ea2f8ac93d7166a38b93e426be5e92100066fb3138f9ccd6"
+  },
+  {
+    "name": "facade/DSC_0387",
+    "image_sha256": "52c071aa9a3af35658f09bae89fa79a4060a1b2d27bdb14f356810ed91f25a75",
+    "depth_sha256": "72d548338a0f5c598ab5f0929bd8387d1db49c9b8953f78fa38bd1fc78677a71"
+  },
+  {
+    "name": "facade/DSC_0388",
+    "image_sha256": "efb77a1e5e7bbb526072cf814f7de5ae6a4cf279e63c4d83c53e73e57529de4c",
+    "depth_sha256": "d77019a3ce87209b29c51ab52f4f0e0e7c656fe499321620a7e510c182a1e0b9"
+  },
+  {
+    "name": "facade/DSC_0389",
+    "image_sha256": "32f93f5f475ae73d8f704dadef3fc74543bef69662eee8a4537b5973fc66ba1a",
+    "depth_sha256": "736fb782a1d87800d3f5a6e83fe94204094589ce20b5e9ddeaa8d5bc6835f381"
+  },
+  {
+    "name": "facade/DSC_0390",
+    "image_sha256": "dae9345876246b515177f9446cf66cea9113d2d0e1d24b5c39172b61ee0b93c3",
+    "depth_sha256": "1a32f4406dc9c55900c85c3bf170a1498090f510b0f13539328cee2d1e9e4d34"
+  },
+  {
+    "name": "facade/DSC_0391",
+    "image_sha256": "4575837fbdb81e061d3a6b2f6eb2603cff1c3ba9431feb72c09951c81265dd27",
+    "depth_sha256": "87d95b435a5da61a6700a09196b57d88b6d8c336a0f61e659815b45b16f9313f"
+  },
+  {
+    "name": "facade/DSC_0392",
+    "image_sha256": "f52ef0b1ebcc72dd5aaf351bfac6213c9f9ec472caf0cd0a7fd2abc0b5423fa5",
+    "depth_sha256": "1824f053cf4c0a81ad992557a02a74c323f8c5a6372c46935e6d813f1d2f2c5d"
+  },
+  {
+    "name": "facade/DSC_0393",
+    "image_sha256": "a6a1b94588b28d7a5d39c81cafe971ef3adaec953a15eefef44732259a7ec189",
+    "depth_sha256": "991cbb64ed567eb4b5b4e3438436c41e0d0f69823f5d12776fed60fa9d2e5de6"
+  },
+  {
+    "name": "facade/DSC_0394",
+    "image_sha256": "cf0f9a4fed9a7d4dd15d9f36757360551f4a365fc418bb8f7c49fe1dd40ed7c0",
+    "depth_sha256": "1292e1253410de23d1a4a9e4e4817bbac0ba7bd34b8781a7185a0b64cbd685c8"
+  },
+  {
+    "name": "facade/DSC_0395",
+    "image_sha256": "9db8716624c20cad8001a25ae61595164b646f30b1a18b04c9953fc496dcf3d7",
+    "depth_sha256": "adb0f2eed55bc1e2791f77f71ee050c75202a0828b05d685b40eab2b733da4de"
+  },
+  {
+    "name": "facade/DSC_0396",
+    "image_sha256": "09b1120411532ba9be2b1f4c92fcc744667f466c5c207a023d507cd302f923b7",
+    "depth_sha256": "3158d6603378eef119d86e4d3a52d74e50dbd6fc0644aa9ce7e82c3192bfbfd2"
+  },
+  {
+    "name": "facade/DSC_0397",
+    "image_sha256": "ef7fb54dcf61223a2a26e3db111e6bb3c9e6c92990537c4812f181b5f0c40d5f",
+    "depth_sha256": "22149a731d9795889cba301af0faa592892cd1ca39873c6a146b0dfd991554b5"
+  },
+  {
+    "name": "facade/DSC_0398",
+    "image_sha256": "9dd4994738841f9e26f688f4e019c31a118c259ec31f9cce4f64bf11873a8be3",
+    "depth_sha256": "eff4905d8176b0d7f37c125e4a5ec47bdebcb28e02bc7c0b4d8a2f7f63f8135a"
+  },
+  {
+    "name": "facade/DSC_0399",
+    "image_sha256": "6a2639c2895a3fa4651a2a153e9285fe4453373c7327bcc527778ac44146d7d7",
+    "depth_sha256": "e76359139dd14ac43e7ee6cd39fd634c56341100a7939d0bb50b54816263e349"
+  },
+  {
+    "name": "facade/DSC_0400",
+    "image_sha256": "b7fd94a0013f1294635dfbeb3914e60e34ecf63dec945b1dd47cf335aa4cc1f4",
+    "depth_sha256": "509cfe777019048bacc3b978b6fa8cc0bde624aa791be45462bb255913c271e1"
+  },
+  {
+    "name": "facade/DSC_0401",
+    "image_sha256": "4e24ef890b6a853cde3ee480a8103ff9ed2285e3cd47156fd47c389fa976653b",
+    "depth_sha256": "8d68de8dd00e28f97d2026155761e0edd03b2cfefa71d6c1b407799b2ebee38d"
+  },
+  {
+    "name": "facade/DSC_0402",
+    "image_sha256": "cdbae4eea6ae63690bf0cde34c3aa87e3248a7ead993aba973bc478a2931c850",
+    "depth_sha256": "d1d92ad713b11df4e6a6945b128b2a687ff63de06ae485a7eccada0ed4524f5d"
+  },
+  {
+    "name": "facade/DSC_0404",
+    "image_sha256": "f600f0044821ff65b9f9e201dbdd2ff7e7fa222fb94bf9d3a24324691456eef0",
+    "depth_sha256": "6fb8c21b8999f50f48681f6f4d3acf293a16bba55ea6baa51e2877cdf14be27d"
+  },
+  {
+    "name": "facade/DSC_0405",
+    "image_sha256": "6bdf67685e9e867df533ffa5d44e6beb303dd044c5ff1b451c461d7314135a88",
+    "depth_sha256": "302bba5508c970394b520d0e0b0a9494d35c2837b0c3f73218fcae6c5334282e"
+  },
+  {
+    "name": "facade/DSC_0406",
+    "image_sha256": "8a16e95770d7e01ce9aadb10e980e59bced117f420a9e31e7ecf708e7d42c51b",
+    "depth_sha256": "805087f7934b077a5a7442e70cdd0fd128a357be1cb39cb6e9efdc739ca211e4"
+  },
+  {
+    "name": "facade/DSC_0407",
+    "image_sha256": "74b932731f3700fba4c19b7a40133f91f5ed4f6b2ec9b806ea01b105e684208b",
+    "depth_sha256": "c57874c18d8548c86980b5c836577845ced3a0c6dce77162ce61e51de2b84033"
+  },
+  {
+    "name": "facade/DSC_0408",
+    "image_sha256": "b521f5df45b2189d8026fdaa5d28be87482467c028ff8b219d036f8e5c56bfe7",
+    "depth_sha256": "97a1f0431bc1d0b8969145c982318021a56f68391ace50f1c70c6a8cff94f81d"
+  },
+  {
+    "name": "facade/DSC_0409",
+    "image_sha256": "9c4e8c9dec979409cab7e7335090851493fd39dad19905b8af0b7557fa55c6c1",
+    "depth_sha256": "9a753464f77b536b1a9d0ac273b26c02d34a125f8cb2978fbfc5a3bfa627f138"
+  },
+  {
+    "name": "facade/DSC_0410",
+    "image_sha256": "da0a1d121cdfb90e2da372135b524a7e32520fde4abe57154ff2a103f96aff53",
+    "depth_sha256": "be623b1910a222bae4343c7ad34656e382705d3af7f6f179f298d4ce6f769108"
+  },
+  {
+    "name": "facade/DSC_0411",
+    "image_sha256": "f6200f6453a9396461f83e0e7fe8f32ad1c0f20e3ffb6958c6c6cdc40af8bf13",
+    "depth_sha256": "68325bb1256c587cd914e62b592c0202bce3e47b0c4042ef63725b0f0e705a8f"
+  },
+  {
+    "name": "facade/DSC_0412",
+    "image_sha256": "656d0530ade848b425c9edfea7b32b0bb729831818e7c4b0b660308b4272581d",
+    "depth_sha256": "8cfe44c194ee7ae382be9305c60626977aec9db12e0b77ca0aa0e4e25c585787"
+  },
+  {
+    "name": "facade/DSC_0413",
+    "image_sha256": "c462f1dc6cdc60846e76e3e474dccf493d784796c27299417bf3ef7ac62647e4",
+    "depth_sha256": "44ac4ed0c925669480e6d37ef810c9b49f8c48647c7c8d7432438934ce97be51"
+  },
+  {
+    "name": "facade/DSC_0414",
+    "image_sha256": "89df66d61a502edaae0a6a3df2396e1fd70e19877add9a33754d2d194d6a2dc5",
+    "depth_sha256": "aa17e1763a222e16f67f999230989f8ceeb1f19193ff537d3ddd17256174f731"
+  },
+  {
+    "name": "facade/DSC_0415",
+    "image_sha256": "513380d5e5c50b6e2394962b882705f784e54756734e0bb7f5f897ddc4b4e53b",
+    "depth_sha256": "0a47ed4255f69bed6b09b5a15fda4ab0d6c565fa01c30fb7c2b08f0f270e71d7"
+  },
+  {
+    "name": "facade/DSC_0419",
+    "image_sha256": "5648ede502d088c4ee837356e2fd3035e5c8100f68152401967916d27e787580",
+    "depth_sha256": "a669157debc6bc7b49948eeb4ff3bd5163863cb2d3fe10bb97b806228f850037"
+  },
+  {
+    "name": "facade/DSC_0420",
+    "image_sha256": "08520ba49fa56f7d388808c6584d2d152a00cb860325cc32ccd5ef23880f1bae",
+    "depth_sha256": "cf73612a5cf5340e41a338cb1d389d5b9791d35d7801277cf056543e1405530d"
+  },
+  {
+    "name": "facade/DSC_0421",
+    "image_sha256": "2e9bac4587d77be66885615298b6e86c2abdc3dee8c446e516ad54be1890b25e",
+    "depth_sha256": "8e980b09b3494dd37df8d0d8fbdbfb947e29f8f21897dc7788935956fda072c8"
+  },
+  {
+    "name": "facade/DSC_0422",
+    "image_sha256": "63a54689bc8b472809523a91b4f849d38fc6f81a207fcede36a86dc670b7e7d8",
+    "depth_sha256": "58d5f2a57fa63e35bf670c324f796b3db569beb207cf290f8627aca908331cd0"
+  }
+]

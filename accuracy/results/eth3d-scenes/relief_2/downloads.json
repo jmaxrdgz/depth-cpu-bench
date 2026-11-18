@@ -1,0 +1,12 @@
+{
+  "relief_2_dslr_undistorted.7z": {
+    "sha256": "3be0ce44ab6ab4224ebc59c7c05aaf82255bb7a8dccaa41e65055e29c41cca88",
+    "bytes": 358562735,
+    "source": "https://www.eth3d.net/data/relief_2_dslr_undistorted.7z"
+  },
+  "relief_2_dslr_depth.7z": {
+    "sha256": "25b6962f73485ffa1102479ad00540e594baa9e2129335e8dd8d3e0842dd1783",
+    "bytes": 646673138,
+    "source": "https://www.eth3d.net/data/relief_2_dslr_depth.7z"
+  }
+}

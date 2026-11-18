@@ -1,0 +1,62 @@
+{
+  "model": "zipdepth",
+  "dataset": "eth3d",
+  "metrics": {
+    "abs_rel": 0.08453868155678114,
+    "sq_rel": 0.61637105991443,
+    "rmse": 2.827958655357361,
+    "rmse_log": 0.1256213997801145,
+    "log10": 0.033170425519347194,
+    "delta1": 0.9613518026254415,
+    "delta2": 0.9867471425727589,
+    "delta3": 0.9935154088768489
+  },
+  "counts": {
+    "images": 15
+  },
+  "sample_manifest_sha256": "a8853a8f6a30b45bd047607e6e2be160d26a7ea41f87f780777c98ee7ad01afd",
+  "scene": "meadow",
+  "subset": false,
+  "backend": "cpu",
+  "threads": 4,
+  "dtype": "float32",
+  "protocol": "zipdepth-least-square-disparity-v1",
+  "dataset_config": {
+    "gt_type": "eth3d",
+    "min_depth": 1e-05,
+    "max_depth": 60.0,
+    "eth3d_height": 4032,
+    "eth3d_width": 6048
+  },
+  "checkpoint_sha256": {
+    "zipdepth_base.pth": "a55910bb0b99c8c5e641cb9206e810b269690ad94e8a2ef08c827c4679391a65"
+  },
+  "input_size": "short-side-384-round32",
+  "sources": {
+    "GuidedDecoding": {
+      "url": "https://github.com/mic-rud/GuidedDecoding.git",
+      "revision": "b1db5156e2aa07544dfeef0625bf73209ee50c4c"
+    },
+    "ZipDepth": {
+      "url": "https://github.com/fabiotosi92/ZipDepth.git",
+      "revision": "91f3fd21e131641f51e8d35736d1958350180e3a"
+    },
+    "RT-MonoDepth": {
+      "url": "https://github.com/Ecalpal/RT-MonoDepth.git",
+      "revision": "3ccc2256396b1478913864f18639ab8b377feced"
+    }
+  },
+  "torch": "2.14.1",
+  "platform": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
+  "timestamp": "2026-11-18T09:39:36.710067+00:00",
+  "evaluator_sha256": "c0477902fcfd53202b33fc4a05ee24a73ca44e86817d03a6f7f78a3aee5b9c05",
+  "harness_sha256": {
+    "benchmark.py": "83480a6ab85f094c18d33b039b42855b1ec3fb98beb1b8ab2b3dfbc4c7eb2e9a",
+    "models.py": "d0a5457f8d50c5fcd62602c250140f2d35b3fa7aa5769877e40a45d3f4271ca2",
+    "__init__.py": "4aeb98a915ab79703a580c82deca6cf9cff517c38dd0a695f07c3d07e3bcafa6",
+    "sequential.py": "0918b2aa4819defc592f10f0ad4d73fc32e57d3c1396e21713a4d7ba317d9bc4",
+    "merge_eth3d.py": "faa687aba60d6ec29f6e44f7057e470d4904f5f83aa5373a0ae6e7100cb33bf4",
+    "browser_queue.py": "67b2c207282f807c99eb7506b9ad0c597fa7838b37c528dd706fd52d33c2b9ee",
+    "report.py": "f7764fc4d1f291230faa3ca72544b550ee7094ead85dc7c0473e0ecdd5d9f2f6"
+  }
+}

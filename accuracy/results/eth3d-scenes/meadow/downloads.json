@@ -1,0 +1,12 @@
+{
+  "meadow_dslr_undistorted.7z": {
+    "sha256": "3632586ca96b63d0a62acce3ec8cd3bea3046ffa8d4d3ef1f616362e5781708e",
+    "bytes": 242353708,
+    "source": "https://www.eth3d.net/data/meadow_dslr_undistorted.7z"
+  },
+  "meadow_dslr_depth.7z": {
+    "sha256": "0aebdaecfa131cd4a2a445de2364b3544b6461e88ee6c1d6ada0d41f5c1a2559",
+    "bytes": 146736485,
+    "source": "https://www.eth3d.net/data/meadow_dslr_depth.7z"
+  }
+}

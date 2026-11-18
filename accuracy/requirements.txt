@@ -1,0 +1,4 @@
+# Additional imports; use the existing root requirements/environment.
+tqdm>=4.66,<5
+Pillow>=10,<13
+gdown>=5,<6
