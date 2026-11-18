@@ -61,7 +61,8 @@ def render(root):
              'then clipped depth metrics from the pinned ZipDepth evaluator.',
              'These scores do not establish metric scale accuracy.', '']
     lines += ['[Protocol, checkpoints and input shapes](README.md) · '
-              '[Recorded environment](results/environment.json)', '']
+              '[Validation and recorded environment](VALIDATION.md)', '',
+              'Detailed result files are retained locally and excluded from version control.', '']
     for dataset in DATASETS:
         sections = [(dataset.upper(), '')]
         if dataset == 'diode':
@@ -84,7 +85,7 @@ def render(root):
             lines += ['']
     lines += ['## Recorded runs', '']
     for (dataset, model), r in records.items():
-        lines.append(f'- [{dataset}/{model}](results/{dataset}/{model}/result.json): '
+        lines.append(f'- {dataset}/{model}: '
                      f'{r["counts"]["images"]} images; {r["timestamp"]}')
     return '\n'.join(lines) + '\n'
 

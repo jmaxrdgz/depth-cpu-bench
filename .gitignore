@@ -6,6 +6,3 @@ results/
 accuracy/data/
 accuracy/checkpoints/
 accuracy/smoke/
-!accuracy/results/
-!accuracy/results/**
-accuracy/results/logs/

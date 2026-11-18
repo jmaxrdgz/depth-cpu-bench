@@ -20,7 +20,7 @@ This downloads DA-2K, evaluates all three models, verifies saved per-image CSVs
 and input manifests, then deletes only its own temporary dataset directory. It
 repeats for DIODE validation, then each of ETH3D's 13 scenes. ETH3D's final means
 are computed from all 454 per-image scores, not unweighted scene means. The
-retained scene results and manifests provide provenance after raw data is removed.
+locally retained scene results and manifests provide provenance after raw data is removed.
 It also downloads/extracts the RT small monocular release checkpoint using gdown
 when missing, and preserves all checkpoints outside temporary dataset storage.
 
@@ -146,9 +146,11 @@ Limited runs are excluded from comparison. Existing output directories are never
 overwritten; select another `--output` for reruns. Failed runs may leave partial
 directories without a result JSON; use a new output directory for the retry.
 
-Small result JSONs and per-image CSVs go to `accuracy/results/` and may be
-committed. No prediction maps are saved. Dataset/checkpoint/smoke directories are
-ignored. The report requires nine complete runs on the same backend, identical dataset/protocol
+Result JSONs, manifests, per-image CSVs and environment/receipt files go to
+`accuracy/results/` and remain local, excluded from version control. Only the
+Markdown summary tables and documentation are committed. No prediction maps are
+saved. Dataset/checkpoint/smoke directories are also ignored. The report requires
+nine complete runs on the same backend, identical dataset/protocol
 and evaluation/source hashes across models, and consistent checkpoint hashes and
 input sizes across datasets. Best values are **bold**, second distinct best
 `<ins>underlined</ins>`; exact ties share rank.

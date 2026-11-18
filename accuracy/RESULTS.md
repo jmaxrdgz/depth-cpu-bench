@@ -7,7 +7,9 @@ Dense metrics use per-image least-squares scale/shift in inverse depth,
 then clipped depth metrics from the pinned ZipDepth evaluator.
 These scores do not establish metric scale accuracy.
 
-[Protocol, checkpoints and input shapes](README.md) · [Recorded environment](results/environment.json)
+[Protocol, checkpoints and input shapes](README.md) · [Validation and recorded environment](VALIDATION.md)
+
+Detailed result files are retained locally and excluded from version control.
 
 ## DA2K
 
@@ -51,12 +53,12 @@ These scores do not establish metric scale accuracy.
 
 ## Recorded runs
 
-- [da2k/guidedepth-s](results/da2k/guidedepth-s/result.json): 1033 images; 2026-11-18T08:32:44.838491+00:00
-- [da2k/zipdepth](results/da2k/zipdepth/result.json): 1033 images; 2026-11-18T08:34:15.969362+00:00
-- [da2k/rt-monodepth-s](results/da2k/rt-monodepth-s/result.json): 1033 images; 2026-11-18T08:35:37.958867+00:00
-- [diode/guidedepth-s](results/diode/guidedepth-s/result.json): 771 images; 2026-11-18T08:40:26.465573+00:00
-- [diode/zipdepth](results/diode/zipdepth/result.json): 771 images; 2026-11-18T08:42:45.679452+00:00
-- [diode/rt-monodepth-s](results/diode/rt-monodepth-s/result.json): 771 images; 2026-11-18T08:44:18.351795+00:00
-- [eth3d/guidedepth-s](results/eth3d/guidedepth-s/result.json): 454 images; 2026-11-18T10:38:20.861033+00:00
-- [eth3d/zipdepth](results/eth3d/zipdepth/result.json): 454 images; 2026-11-18T10:41:36.009196+00:00
-- [eth3d/rt-monodepth-s](results/eth3d/rt-monodepth-s/result.json): 454 images; 2026-11-18T10:43:03.729732+00:00
+- da2k/guidedepth-s: 1033 images; 2026-11-18T08:32:44.838491+00:00
+- da2k/zipdepth: 1033 images; 2026-11-18T08:34:15.969362+00:00
+- da2k/rt-monodepth-s: 1033 images; 2026-11-18T08:35:37.958867+00:00
+- diode/guidedepth-s: 771 images; 2026-11-18T08:40:26.465573+00:00
+- diode/zipdepth: 771 images; 2026-11-18T08:42:45.679452+00:00
+- diode/rt-monodepth-s: 771 images; 2026-11-18T08:44:18.351795+00:00
+- eth3d/guidedepth-s: 454 images; 2026-11-18T10:38:20.861033+00:00
+- eth3d/zipdepth: 454 images; 2026-11-18T10:41:36.009196+00:00
+- eth3d/rt-monodepth-s: 454 images; 2026-11-18T10:43:03.729732+00:00
