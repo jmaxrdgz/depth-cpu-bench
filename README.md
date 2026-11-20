@@ -10,6 +10,10 @@ is a separate [benchmark](accuracy/README.md) with a [results table](accuracy/RE
 It uses CPU inference (optional MPS) on DA-2K, DIODE and ETH3D, with sequential
 dataset downloads and cleanup; it does not modify these CPU timing results.
 
+For deployment, use the [ZipDepth ncnn exporter](export/README.md) and
+[camera/video inference runner](inference/README.md). They use the original
+pretrained graph with fusion and CPU FP16 inference, separately from the benchmarks.
+
 ## CPU results
 
 ### MacBook (Apple M3, one CPU thread)
