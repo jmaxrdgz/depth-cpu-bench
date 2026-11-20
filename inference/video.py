@@ -75,8 +75,11 @@ def main():
             times.append(milliseconds)
             view = np.concatenate([frame, colorize(depth)], axis=1)
             model_fps = 1000 / (sum(times) / len(times))
-            cv2.putText(view, f'Relative inverse depth | model {model_fps:.1f} FPS | near = bright',
-                        (10, 25), cv2.FONT_HERSHEY_SIMPLEX, .55, (255, 255, 255), 1, cv2.LINE_AA)
+            counter = f'Inference: {model_fps:.1f} FPS'
+            cv2.putText(view, counter, (10, 20), cv2.FONT_HERSHEY_SIMPLEX,
+                        .45, (0, 0, 0), 3, cv2.LINE_AA)
+            cv2.putText(view, counter, (10, 20), cv2.FONT_HERSHEY_SIMPLEX,
+                        .45, (255, 255, 255), 1, cv2.LINE_AA)
             # Video codecs require even dimensions.
             view = cv2.copyMakeBorder(view, 0, view.shape[0] % 2, 0, view.shape[1] % 2,
                                       cv2.BORDER_REPLICATE)
